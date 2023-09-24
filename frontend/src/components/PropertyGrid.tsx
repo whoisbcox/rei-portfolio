@@ -1,27 +1,8 @@
-import { useEffect, useState } from 'react'
-import apiClient from '../services/api-client';
 import { Text } from '@chakra-ui/react';
-
-interface Property {
-  id: number;
-  title: string;
-}
-
-interface FetchPropertiesResponse {
-  count: number;
-  results: Property[];
-}
+import useProperties from '../hooks/useProperties';
 
 const PropertyGrid = () => {
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    apiClient
-      .get<FetchPropertiesResponse>('/api/properties')
-      .then(res => setProperties(res.data.results))
-      .catch(err => setError(err.message));
-  });
+  const {properties, error} = useProperties();
   
   return (
     <>
