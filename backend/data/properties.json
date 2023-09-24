@@ -1,17 +1,17 @@
 {
   "count": 12,
   "results": [
-    { "id": 1,"title": "1234 Main St", "background_image": "https://picsum.photos/300/200?random=1", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}] },
-    { "id": 2,"title": "4321 Washington Ave", "background_image": "https://picsum.photos/300/200?random=2", "platforms": [{"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}] },
-    { "id": 3,"title": "9876 Mountain St", "background_image": "https://picsum.photos/300/200?random=3", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}] },
-    { "id": 4,"title": "1122 First St", "background_image": "https://picsum.photos/300/200?random=4", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 5,"title": "3344 Apple Ln", "background_image": "https://picsum.photos/300/200?random=5", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 6,"title": "5566 Oak Blvd", "background_image": "https://picsum.photos/300/200?random=6", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 7,"title": "7788 Fairway Dr", "background_image": "https://picsum.photos/300/200?random=7", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 8,"title": "9900 Cedar Ln", "background_image": "https://picsum.photos/300/200?random=8", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 9,"title": "1029 Sunset Dr", "background_image": "https://picsum.photos/300/200?random=9", "platforms": [{"id":3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}] },
-    { "id": 10,"title": "4848 Elm St", "background_image": "https://picsum.photos/300/200?random=10", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}] },
-    { "id": 11,"title": "1212 Ash St", "background_image": "https://picsum.photos/300/200?random=11", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] },
-    { "id": 12,"title": "3434 Jackson St", "background_image": "https://picsum.photos/300/200?random=12", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}] }
+    { "id": 1,"title": "1234 Main St", "background_image": "https://picsum.photos/300/200?random=1", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}], "days_booked": 100 },
+    { "id": 2,"title": "4321 Washington Ave", "background_image": "https://picsum.photos/300/200?random=2", "platforms": [{"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}], "days_booked": 0 },
+    { "id": 3,"title": "9876 Mountain St", "background_image": "https://picsum.photos/300/200?random=3", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}], "days_booked": 100 },
+    { "id": 4,"title": "1122 First St", "background_image": "https://picsum.photos/300/200?random=4", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 87 },
+    { "id": 5,"title": "3344 Apple Ln", "background_image": "https://picsum.photos/300/200?random=5", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 44 },
+    { "id": 6,"title": "5566 Oak Blvd", "background_image": "https://picsum.photos/300/200?random=6", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 27 },
+    { "id": 7,"title": "7788 Fairway Dr", "background_image": "https://picsum.photos/300/200?random=7", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 94 },
+    { "id": 8,"title": "9900 Cedar Ln", "background_image": "https://picsum.photos/300/200?random=8", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 68 },
+    { "id": 9,"title": "1029 Sunset Dr", "background_image": "https://picsum.photos/300/200?random=9", "platforms": [{"id":3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}], "days_booked": 100 },
+    { "id": 10,"title": "4848 Elm St", "background_image": "https://picsum.photos/300/200?random=10", "platforms": [{"id": 2, "name": "Zillow", "slug": "zillow", "url": "https://www.zillow.com"}, {"id": 3, "name": "Realtor.com", "slug": "realtor", "url": "https://www.realtor.com"}], "days_booked": 0 },
+    { "id": 11,"title": "1212 Ash St", "background_image": "https://picsum.photos/300/200?random=11", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 58 },
+    { "id": 12,"title": "3434 Jackson St", "background_image": "https://picsum.photos/300/200?random=12", "platforms": [{"id":1, "name": "AirBnB", "slug": "airbnb", "url": "https://www.airbnb.com"}], "days_booked": 100 }
   ]
 }
