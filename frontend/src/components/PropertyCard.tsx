@@ -1,6 +1,7 @@
 import { Property } from '../hooks/useProperties'
-import { Box, Heading, Image } from '@chakra-ui/react'
+import { Box, HStack, Heading, Image } from '@chakra-ui/react'
 import PlatformIconList from './PlatformIconList'
+import DaysBooked from './DaysBooked'
 
 interface Props {
   property: Property
@@ -11,7 +12,10 @@ const PropertyCard = ({ property }: Props) => {
     <Box>
       <Image src={property.background_image} borderRadius={5}/>
       <Heading mt={2} fontSize={'lg'}>{property.title}</Heading>
-      <PlatformIconList platforms={property.platforms}/>
+      <HStack justifyContent='space-between'>
+        <PlatformIconList platforms={property.platforms}/>
+        <DaysBooked days_booked={property.days_booked} />
+      </HStack>
     </Box>
   )
 }

@@ -13,6 +13,7 @@ export interface Property {
   title: string;
   background_image: string;
   platforms: Platform[];
+  days_booked: number;
 }
 
 interface FetchPropertiesResponse {
