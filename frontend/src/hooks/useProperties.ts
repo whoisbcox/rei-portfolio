@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-interface Property {
+export interface Property {
   id: number;
   title: string;
+  background_image: string;
 }
 
 interface FetchPropertiesResponse {

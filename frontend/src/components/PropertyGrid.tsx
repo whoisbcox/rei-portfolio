@@ -1,5 +1,6 @@
-import { Text } from '@chakra-ui/react';
+import { SimpleGrid, Text } from '@chakra-ui/react';
 import useProperties from '../hooks/useProperties';
+import Property from './PropertyCard';
 
 const PropertyGrid = () => {
   const {properties, error} = useProperties();
@@ -7,9 +8,9 @@ const PropertyGrid = () => {
   return (
     <>
     {error && <Text>{error}</Text>}
-    <ul>
-      {properties.map(property => <li key={property.id}>{property.title}</li>)}
-    </ul>
+    <SimpleGrid columns={{sm: 1, md: 2, xl:3 }} padding='10px' spacing={10}>
+      {properties.map(property => <Property key={property.id} property={property} />)}
+    </SimpleGrid>
     </>
   )
 }
