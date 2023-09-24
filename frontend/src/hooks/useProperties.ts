@@ -24,22 +24,28 @@ interface FetchPropertiesResponse {
 const useProperties = () => {
   const [properties, setProperties] = useState<Property[]>([]);
   const [error, setError] = useState('');
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
-
+    
+    setLoading(true);
     apiClient
       .get<FetchPropertiesResponse>('/api/properties', { signal: controller.signal })
-      .then(res => setProperties(res.data.results))
+      .then((res) => {
+        setProperties(res.data.results);
+        setLoading(false);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message)
+        setLoading(false);
       });
 
     return () => controller.abort();
   }, []);
 
-  return { properties, error };
+  return { properties, error, isLoading };
 }
 
 export default useProperties;

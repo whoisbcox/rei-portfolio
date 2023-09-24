@@ -9,7 +9,7 @@ interface Props {
 
 const PropertyCard = ({ property }: Props) => {
   return (
-    <Box>
+    <Box width='300px'>
       <Image src={property.background_image} borderRadius={5}/>
       <Heading mt={2} fontSize={'lg'}>{property.title}</Heading>
       <HStack justifyContent='space-between'>
