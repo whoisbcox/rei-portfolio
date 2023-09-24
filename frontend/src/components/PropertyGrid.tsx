@@ -8,8 +8,8 @@ interface Property {
 }
 
 interface FetchPropertiesResponse {
-  count: number; 
-  results: Property[]
+  count: number;
+  results: Property[];
 }
 
 const PropertyGrid = () => {
@@ -17,11 +17,9 @@ const PropertyGrid = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    apiClient.get<FetchPropertiesResponse>('/properties')
-      .then(res => {
-        console.log(res.data);
-        setProperties(res.data.results);
-      })
+    apiClient
+      .get<FetchPropertiesResponse>('/api/properties')
+      .then(res => setProperties(res.data.results))
       .catch(err => setError(err.message));
   });
   
