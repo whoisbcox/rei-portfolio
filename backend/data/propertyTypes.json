@@ -1,0 +1,12 @@
+{
+  "count": 4,
+  "results": [
+    { "id": 1, "name": "Long Term Rental"},
+    { "id": 2, "name": "Mid Term Rental"},
+    { "id": 3, "name": "Short Term Rental"},
+    { "id": 4, "name": "Residential For Sale"},
+    { "id": 5, "name": "Commercial For Sale"},
+    { "id": 6, "name": "Commercial Leasing"},
+    { "id": 7, "name": "Land For Sale"}
+  ]
+}
