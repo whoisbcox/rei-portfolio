@@ -1,4 +1,5 @@
 import useData from './useData';
+import { PropertyType } from './usePropertyTypes';
 
 export interface Platform {
   id: number;
@@ -14,6 +15,7 @@ export interface Property {
   days_booked: number;
 }
 
-const useProperties = () => useData<Property>('/api/properties');
+const useProperties = (selectedPropertyType: PropertyType | null) =>
+  useData<Property>('/api/properties', { params: { propertyTypes: selectedPropertyType?.id}}, [selectedPropertyType?.id]);
 
 export default useProperties;

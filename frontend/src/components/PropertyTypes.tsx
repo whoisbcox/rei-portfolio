@@ -1,11 +1,15 @@
-import { HStack, Icon, List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import usePropertyTypes from "../hooks/usePropertyTypes"
+import { Button, HStack, Icon, List, ListItem, Spinner } from "@chakra-ui/react";
+import usePropertyTypes, { PropertyType } from "../hooks/usePropertyTypes"
 import { IconType } from "react-icons";
 import { SiHomeassistantcommunitystore } from "react-icons/si"
 import { FaCampground, FaHome, FaRegBuilding, FaStethoscope, FaUmbrellaBeach } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
 
-const PropertyTypes = () => {
+interface Props {
+  onSelectPropertyType: (propertyType: PropertyType) => void;
+}
+
+const PropertyTypes = ({ onSelectPropertyType }: Props) => {
   const { data, isLoading, error } = usePropertyTypes();
   const iconMap: {[key:number]: IconType } = {
     1:FaHome,
@@ -25,9 +29,9 @@ const PropertyTypes = () => {
         <ListItem key={propertyType.id} paddingY='10px'>
           <HStack>
             <Icon as={iconMap[propertyType.id]} boxSize={6} color='gray.500' />
-            <Text>
+            <Button onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
               {propertyType.name}
-            </Text>
+            </Button>
           </HStack>
         </ListItem>
       ))}

@@ -2,9 +2,14 @@ import { SimpleGrid, Text } from '@chakra-ui/react';
 import useProperties from '../hooks/useProperties';
 import Property from './PropertyCard';
 import PropertyCardSkeleton from './PropertyCardSkeleton';
+import { PropertyType } from '../hooks/usePropertyTypes';
 
-const PropertyGrid = () => {
-  const {data, error, isLoading} = useProperties();
+interface Props {
+  selectedPropertyType: PropertyType | null;
+}
+
+const PropertyGrid = ({selectedPropertyType}: Props) => {
+  const {data, error, isLoading} = useProperties(selectedPropertyType);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   
   return (

@@ -2,9 +2,13 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PropertyGrid from "./components/PropertyGrid";
 import PropertyTypes from "./components/PropertyTypes";
+import { useState } from "react";
+import { PropertyType } from "./hooks/usePropertyTypes";
 
 
 function App() {
+  const [selectedPropertyType, setSelectedPropertyType] = useState<PropertyType | null>(null);
+  
   return <Grid
     templateAreas={{
       base: `"nav" "main"`,
@@ -17,9 +21,9 @@ function App() {
   >
     <GridItem area="nav"><NavBar /></GridItem>
     <Show above="lg">
-      <GridItem area="aside" paddingX='10px'><PropertyTypes /></GridItem>
+      <GridItem area="aside" paddingX='10px'><PropertyTypes onSelectPropertyType={(propertyType)=> setSelectedPropertyType(propertyType)} /></GridItem>
     </Show>
-    <GridItem area="main"><PropertyGrid /></GridItem>
+    <GridItem area="main"><PropertyGrid selectedPropertyType={selectedPropertyType}/></GridItem>
   </Grid>;
 }
 
