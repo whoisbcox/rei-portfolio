@@ -2,10 +2,10 @@ import usePropertyTypes from "../hooks/usePropertyTypes"
 
 
 const PropertyTypes = () => {
-  const { propertyTypes } = usePropertyTypes();
+  const { data } = usePropertyTypes();
   return (
     <ul>
-      {propertyTypes.map(propertyType => <li key={propertyType.id}>{propertyType.name}</li>)}
+      {data.map(propertyType => <li key={propertyType.id}>{propertyType.name}</li>)}
     </ul>
   )
 }
