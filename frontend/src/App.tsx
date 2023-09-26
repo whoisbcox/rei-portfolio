@@ -21,7 +21,7 @@ function App() {
   >
     <GridItem area="nav"><NavBar /></GridItem>
     <Show above="lg">
-      <GridItem area="aside" paddingX='10px'><PropertyTypes onSelectPropertyType={(propertyType)=> setSelectedPropertyType(propertyType)} /></GridItem>
+      <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={selectedPropertyType} onSelectPropertyType={(propertyType)=> setSelectedPropertyType(propertyType)} /></GridItem>
     </Show>
     <GridItem area="main"><PropertyGrid selectedPropertyType={selectedPropertyType}/></GridItem>
   </Grid>;

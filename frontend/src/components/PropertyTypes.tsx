@@ -7,9 +7,10 @@ import { FaSignHanging } from "react-icons/fa6"
 
 interface Props {
   onSelectPropertyType: (propertyType: PropertyType) => void;
+  selectedPropertyType: PropertyType | null;
 }
 
-const PropertyTypes = ({ onSelectPropertyType }: Props) => {
+const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) => {
   const { data, isLoading, error } = usePropertyTypes();
   const iconMap: {[key:number]: IconType } = {
     1:FaHome,
@@ -29,7 +30,7 @@ const PropertyTypes = ({ onSelectPropertyType }: Props) => {
         <ListItem key={propertyType.id} paddingY='10px'>
           <HStack>
             <Icon as={iconMap[propertyType.id]} boxSize={6} color='gray.500' />
-            <Button onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
+            <Button fontWeight={propertyType.id == selectedPropertyType?.id ? 'bold': 'normal'} onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
               {propertyType.name}
             </Button>
           </HStack>
