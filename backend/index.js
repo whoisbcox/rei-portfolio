@@ -9,8 +9,11 @@ app.use(express.json());
 
 // Properties
 app.get('/api/properties', (req, res) => {
-  res.status(200).send(properties);
+  const selectedPropertyTypes = parseInt(req.query.propertyTypes);
+  const filteredResults = selectedPropertyTypes ? properties.results.filter(p => p.propertyTypes === selectedPropertyTypes) : properties.results;
+  res.status(200).send({ ...properties, results: filteredResults });
 });
+
 
 app.get('/api/properties/:id', (req, res) => {
   const property = properties.results.find(p => p.id === parseInt(req.params.id));
