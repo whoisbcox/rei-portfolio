@@ -4,10 +4,21 @@ import PropertyGrid from "./components/PropertyGrid";
 import PropertyTypes from "./components/PropertyTypes";
 import { useState } from "react";
 import { PropertyType } from "./hooks/usePropertyTypes";
+import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
 
 
 function App() {
   const [selectedPropertyType, setSelectedPropertyType] = useState<PropertyType | null>(null);
+  const [filterSettings, setFilterSettings] = useState({
+    min_bedrooms: '',
+    max_bedrooms: '',
+    min_bathrooms: '',
+    max_bathrooms: '',
+  });
+
+  const updateFilterSettings = (newFilterSettings: FilterSettings): void => {
+    setFilterSettings(newFilterSettings);
+  }
   
   return <Grid
     templateAreas={{
@@ -23,7 +34,10 @@ function App() {
     <Show above="lg">
       <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={selectedPropertyType} onSelectPropertyType={(propertyType)=> setSelectedPropertyType(propertyType)} /></GridItem>
     </Show>
-    <GridItem area="main"><PropertyGrid selectedPropertyType={selectedPropertyType}/></GridItem>
+    <GridItem area="main">
+      <PropertyFilter filterSettings={filterSettings} updateFilterSettings={updateFilterSettings} />
+      <PropertyGrid selectedPropertyType={selectedPropertyType}/>
+    </GridItem>
   </Grid>;
 }
 
