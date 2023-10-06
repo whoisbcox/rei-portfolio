@@ -3,13 +3,15 @@ import useProperties from '../hooks/useProperties';
 import Property from './PropertyCard';
 import PropertyCardSkeleton from './PropertyCardSkeleton';
 import { PropertyType } from '../hooks/usePropertyTypes';
+import { FilterSettings } from './PropertyFilter';
 
 interface Props {
   selectedPropertyType: PropertyType | null;
+  filterSettings: FilterSettings;
 }
 
-const PropertyGrid = ({selectedPropertyType}: Props) => {
-  const {data, error, isLoading} = useProperties(selectedPropertyType);
+const PropertyGrid = ({selectedPropertyType, filterSettings}: Props) => {
+  const {data, error, isLoading} = useProperties(selectedPropertyType, filterSettings);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   
   return (

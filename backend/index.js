@@ -9,10 +9,55 @@ app.use(express.json());
 
 // Properties
 app.get('/api/properties', (req, res) => {
+  console.log(req.query);
+
+  // Parse query parameters for propertyTypes, min_bedrooms, max_bedrooms, min_bathrooms, and max_bathrooms
   const selectedPropertyTypes = parseInt(req.query.propertyTypes);
-  const filteredResults = selectedPropertyTypes ? properties.results.filter(p => p.propertyTypes === selectedPropertyTypes) : properties.results;
+
+  // Parse bedroom and bathroom filters if provided
+  const min_bedrooms = req.query.min_bedrooms ? parseInt(req.query.min_bedrooms) : undefined;
+  const max_bedrooms = req.query.max_bedrooms ? parseInt(req.query.max_bedrooms) : undefined;
+  const min_bathrooms = req.query.min_bathrooms ? parseInt(req.query.min_bathrooms) : undefined;
+  const max_bathrooms = req.query.max_bathrooms ? parseInt(req.query.max_bathrooms) : undefined;
+
+  // Start with all properties
+  let filteredResults = properties.results;
+
+  // Filter based on selected property types, if provided
+  if (selectedPropertyTypes) {
+    filteredResults = filteredResults.filter((property) => property.propertyTypes === selectedPropertyTypes);
+  }
+
+  // Filter based on bedrooms, if filter parameters are provided
+  if (min_bedrooms !== undefined || max_bedrooms !== undefined) {
+    filteredResults = filteredResults.filter((property) => {
+      const bedrooms = property.bedrooms || 0;
+      return (
+        (min_bedrooms === undefined || bedrooms >= min_bedrooms) &&
+        (max_bedrooms === undefined || bedrooms <= max_bedrooms)
+      );
+    });
+  }
+
+  // Filter based on bathrooms, if filter parameters are provided
+  if (min_bathrooms !== undefined || max_bathrooms !== undefined) {
+    filteredResults = filteredResults.filter((property) => {
+      const bathrooms = property.bathrooms || 0;
+      return (
+        (min_bathrooms === undefined || bathrooms >= min_bathrooms) &&
+        (max_bathrooms === undefined || bathrooms <= max_bathrooms)
+      );
+    });
+  }
+
   res.status(200).send({ ...properties, results: filteredResults });
 });
+
+
+
+
+
+
 
 
 app.get('/api/properties/:id', (req, res) => {

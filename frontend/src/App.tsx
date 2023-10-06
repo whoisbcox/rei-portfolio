@@ -36,7 +36,7 @@ function App() {
     </Show>
     <GridItem area="main">
       <PropertyFilter filterSettings={filterSettings} updateFilterSettings={updateFilterSettings} />
-      <PropertyGrid selectedPropertyType={selectedPropertyType}/>
+      <PropertyGrid filterSettings={filterSettings} selectedPropertyType={selectedPropertyType}/>
     </GridItem>
   </Grid>;
 }
