@@ -19,6 +19,8 @@
           "url": "https://www.realtor.com"
         }
       ],
+      "bedrooms": 3,
+      "bathrooms": 2,
       "days_booked": 100,
       "propertyTypes": 1
     },
@@ -34,6 +36,8 @@
           "url": "https://www.realtor.com"
         }
       ],
+      "bedrooms": 3,
+      "bathrooms": 2,
       "days_booked": 0,
       "propertyTypes": 7
     },
@@ -55,6 +59,8 @@
           "url": "https://www.realtor.com"
         }
       ],
+      "bedrooms": 1,
+      "bathrooms": 1,
       "days_booked": 100,
       "propertyTypes": 4
     },
@@ -70,6 +76,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 2,
+      "bathrooms": 1,
       "days_booked": 87,
       "propertyTypes": 3
     },
@@ -85,6 +93,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 5,
+      "bathrooms": 4,
       "days_booked": 44,
       "propertyTypes": 3
     },
@@ -100,6 +110,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 4,
+      "bathrooms": 3,
       "days_booked": 27,
       "propertyTypes": 3
     },
@@ -115,6 +127,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 3,
+      "bathrooms": 1,
       "days_booked": 94,
       "propertyTypes": 2
     },
@@ -130,6 +144,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 4,
+      "bathrooms": 3,
       "days_booked": 68,
       "propertyTypes": 6
     },
@@ -145,6 +161,8 @@
           "url": "https://www.realtor.com"
         }
       ],
+      "bedrooms": 6,
+      "bathrooms": 4,
       "days_booked": 100,
       "propertyTypes": 5
     },
@@ -166,6 +184,8 @@
           "url": "https://www.realtor.com"
         }
       ],
+      "bedrooms": 7,
+      "bathrooms": 4,
       "days_booked": 0,
       "propertyTypes": 1
     },
@@ -181,6 +201,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 3,
+      "bathrooms": 4,
       "days_booked": 58,
       "propertyTypes": 3
     },
@@ -196,6 +218,8 @@
           "url": "https://www.airbnb.com"
         }
       ],
+      "bedrooms": 4,
+      "bathrooms": 2.5,
       "days_booked": 100,
       "propertyTypes": 4
     }
