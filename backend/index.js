@@ -9,9 +9,9 @@ app.use(express.json());
 
 // Properties
 app.get('/api/properties', (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
 
-  // Parse query parameters for propertyTypes, min_bedrooms, max_bedrooms, min_bathrooms, and max_bathrooms
+  // Parse query parameters for propertyTypes
   const selectedPropertyTypes = parseInt(req.query.propertyTypes);
 
   // Parse bedroom and bathroom filters if provided

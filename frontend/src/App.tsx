@@ -6,18 +6,21 @@ import { useState } from "react";
 import { PropertyType } from "./hooks/usePropertyTypes";
 import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
 
+export interface PropertyQuery {
+  propertyType: PropertyType | null;
+  filterSettings: FilterSettings;
+}
 
 function App() {
-  const [selectedPropertyType, setSelectedPropertyType] = useState<PropertyType | null>(null);
-  const [filterSettings, setFilterSettings] = useState({
+  const [propertyQuery, setPropertyQuery ] = useState<PropertyQuery>({propertyType: null, filterSettings: {
     min_bedrooms: '',
     max_bedrooms: '',
     min_bathrooms: '',
     max_bathrooms: '',
-  });
+  } });
 
   const updateFilterSettings = (newFilterSettings: FilterSettings): void => {
-    setFilterSettings(newFilterSettings);
+    setPropertyQuery({...propertyQuery, filterSettings: newFilterSettings});
   }
   
   return <Grid
@@ -32,11 +35,11 @@ function App() {
   >
     <GridItem area="nav"><NavBar /></GridItem>
     <Show above="lg">
-      <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={selectedPropertyType} onSelectPropertyType={(propertyType)=> setSelectedPropertyType(propertyType)} /></GridItem>
+      <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={propertyQuery.propertyType} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyType})} /></GridItem>
     </Show>
     <GridItem area="main">
-      <PropertyFilter filterSettings={filterSettings} updateFilterSettings={updateFilterSettings} />
-      <PropertyGrid filterSettings={filterSettings} selectedPropertyType={selectedPropertyType}/>
+      <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
+      <PropertyGrid propertyQuery={propertyQuery} />
     </GridItem>
   </Grid>;
 }
