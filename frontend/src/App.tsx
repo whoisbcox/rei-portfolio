@@ -1,14 +1,16 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PropertyGrid from "./components/PropertyGrid";
 import PropertyTypes from "./components/PropertyTypes";
 import { useState } from "react";
 import { PropertyType } from "./hooks/usePropertyTypes";
 import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
+import SortSelector from "./components/SortSelector";
 
 export interface PropertyQuery {
   propertyType: PropertyType | null;
   filterSettings: FilterSettings;
+  sortOrder: string;
 }
 
 function App() {
@@ -38,7 +40,10 @@ function App() {
       <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={propertyQuery.propertyType} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyType})} /></GridItem>
     </Show>
     <GridItem area="main">
-      <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
+      <HStack>
+        <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
+        <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
+      </HStack>
       <PropertyGrid propertyQuery={propertyQuery} />
     </GridItem>
   </Grid>;

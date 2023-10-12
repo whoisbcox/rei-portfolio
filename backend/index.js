@@ -9,10 +9,11 @@ app.use(express.json());
 
 // Properties
 app.get('/api/properties', (req, res) => {
-  // console.log(req.query);
-
   // Parse query parameters for propertyTypes
   const selectedPropertyTypes = parseInt(req.query.propertyTypes);
+  
+  // Store sorting option if provided
+  const ordering = req.query.ordering ? req.query.ordering : undefined;
 
   // Parse bedroom and bathroom filters if provided
   const min_bedrooms = req.query.min_bedrooms ? parseInt(req.query.min_bedrooms) : undefined;
@@ -49,16 +50,21 @@ app.get('/api/properties', (req, res) => {
       );
     });
   }
-
+  
+  // Sorting
+  if (typeof ordering !== 'undefined' && filteredResults) {
+    const sortFunctions = {
+      'name': (a, b) => a.name.localeCompare(b.name),
+      'availability': (a, b) => a.days_booked - b.days_booked,
+    };
+  
+    filteredResults.sort(sortFunctions[ordering]);
+  } else {
+    filteredResults.sort((a, b) => a.id - b.id);
+  }
+  
   res.status(200).send({ ...properties, results: filteredResults });
 });
-
-
-
-
-
-
-
 
 app.get('/api/properties/:id', (req, res) => {
   const property = properties.results.find(p => p.id === parseInt(req.params.id));
@@ -69,7 +75,7 @@ app.get('/api/properties/:id', (req, res) => {
 app.post('/api/properties', (req, res) => {
   const property = {
     id: properties.results.length + 1,
-    title: req.body.title
+    name: req.body.name
   }
 
   properties.results.push(property);
@@ -99,7 +105,7 @@ app.get('/api/property-types/:id', (req, res) => {
 app.post('/api/property-types', (req, res) => {
   const propertyType = {
     id: propertyTypes.results.length + 1,
-    title: req.body.title
+    name: req.body.name
   }
 
   propertyTypes.results.push(propertyType);

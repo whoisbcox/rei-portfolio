@@ -11,7 +11,7 @@ export interface Platform {
 
 export interface Property {
   id: number;
-  title: string;
+  name: string;
   background_image: string;
   platforms: Platform[];
   days_booked: number;
@@ -31,7 +31,8 @@ const useProperties = (propertyQuery: PropertyQuery) => {
       min_bedrooms: minBedrooms,
       max_bedrooms: maxBedrooms,
       min_bathrooms: minBathrooms,
-      max_bathrooms: maxBathrooms
+      max_bathrooms: maxBathrooms, 
+      ordering: propertyQuery.sortOrder
     }}, [propertyQuery])
   }
 export default useProperties;

@@ -11,7 +11,7 @@ const PropertyCard = ({ property }: Props) => {
   return (
     <Box>
       <Image src={property.background_image} width='100%' borderRadius={5}/>
-      <Heading mt={2} fontSize={'lg'}>{property.title}</Heading>
+      <Heading mt={2} fontSize={'lg'}>{property.name}</Heading>
       <HStack>
         <Text>{property.bedrooms} Bed</Text>
         <Text>{property.bathrooms} Bath</Text>
