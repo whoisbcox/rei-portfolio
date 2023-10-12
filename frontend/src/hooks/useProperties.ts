@@ -1,7 +1,5 @@
 import { PropertyQuery } from '../App';
-import { FilterSettings } from '../components/PropertyFilter';
 import useData from './useData';
-import { PropertyType } from './usePropertyTypes';
 
 export interface Platform {
   id: number;

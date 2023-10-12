@@ -14,12 +14,16 @@ export interface PropertyQuery {
 }
 
 function App() {
-  const [propertyQuery, setPropertyQuery ] = useState<PropertyQuery>({propertyType: null, filterSettings: {
-    min_bedrooms: '',
-    max_bedrooms: '',
-    min_bathrooms: '',
-    max_bathrooms: '',
-  } });
+  const [propertyQuery, setPropertyQuery ] = useState<PropertyQuery>({
+    propertyType: null,
+    filterSettings: {
+      min_bedrooms: '',
+      max_bedrooms: '',
+      min_bathrooms: '',
+      max_bathrooms: '',
+    },
+    sortOrder: ''
+  });
 
   const updateFilterSettings = (newFilterSettings: FilterSettings): void => {
     setPropertyQuery({...propertyQuery, filterSettings: newFilterSettings});
