@@ -1,4 +1,4 @@
-import { Button, HStack, Icon, List, ListItem, Spinner } from "@chakra-ui/react";
+import { Button, HStack, Heading, Icon, List, ListItem, Spinner } from "@chakra-ui/react";
 import usePropertyTypes, { PropertyType } from "../hooks/usePropertyTypes"
 import { IconType } from "react-icons";
 import { SiHomeassistantcommunitystore } from "react-icons/si"
@@ -27,18 +27,21 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <List>
-      {data.map((propertyType) => (
-        <ListItem key={propertyType.id} paddingY='10px'>
-          <HStack>
-            <Icon as={iconMap[propertyType.id]} boxSize={6} color='gray.500' />
-            <Button fontWeight={propertyType.id == selectedPropertyType?.id ? 'bold': 'normal'} onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
-              {propertyType.name}
-            </Button>
-          </HStack>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
+      <List>
+        {data.map((propertyType) => (
+          <ListItem key={propertyType.id} paddingY='10px'>
+            <HStack>
+              <Icon as={iconMap[propertyType.id]} boxSize={6} color='gray.500' />
+              <Button fontWeight={propertyType.id == selectedPropertyType?.id ? 'bold': 'normal'} onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
+                {propertyType.name}
+              </Button>
+            </HStack>
+          </ListItem>
+        ))}
+      </List>
+    </>
   )
 }
 
