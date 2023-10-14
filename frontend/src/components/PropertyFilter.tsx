@@ -72,7 +72,7 @@ const PropertyFilter = ({ filterSettings, updateFilterSettings }: Props) => {
   } = useMinMaxSelect(filterSettings.min_bathrooms, filterSettings.max_bathrooms, rooms);
 
   return (
-    <HStack paddingLeft={'10px'}>
+    <HStack>
       <Box>
         <Text>Bedrooms</Text>
         <HStack>

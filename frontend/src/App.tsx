@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PropertyGrid from "./components/PropertyGrid";
 import PropertyTypes from "./components/PropertyTypes";
@@ -7,6 +7,7 @@ import { PropertyType } from "./hooks/usePropertyTypes";
 import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
 import SortSelector from "./components/SortSelector";
 import SearchInput from "./components/SearchInput";
+import PropertyHeading from "./components/PropertyHeading";
 
 export interface PropertyQuery {
   propertyType: PropertyType | null;
@@ -47,11 +48,14 @@ function App() {
       <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={propertyQuery.propertyType} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyType})} /></GridItem>
     </Show>
     <GridItem area="main">
-      <HStack>
-        <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
-        <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
-        <SearchInput onSearch={(searchText) => setPropertyQuery({...propertyQuery, searchText})} />
-      </HStack>
+      <Box paddingLeft={2}>
+        <PropertyHeading propertyQuery={propertyQuery}/>
+        <HStack>
+          <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
+          <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
+          <SearchInput onSearch={(searchText) => setPropertyQuery({...propertyQuery, searchText})} />
+        </HStack>
+      </Box>
       <PropertyGrid propertyQuery={propertyQuery} />
     </GridItem>
   </Grid>;

@@ -1,9 +1,10 @@
 {
-  "count": 4,
+  "count": 8,
   "results": [
-    { "id": 1, "name": "Long Term Rental"},
-    { "id": 2, "name": "Mid Term Rental"},
-    { "id": 3, "name": "Short Term Rental"},
+    { "id": 0, "name": "All Listings"},
+    { "id": 1, "name": "Long Term Rentals"},
+    { "id": 2, "name": "Mid Term Rentals"},
+    { "id": 3, "name": "Short Term Rentals"},
     { "id": 4, "name": "Residential For Sale"},
     { "id": 5, "name": "Commercial For Sale"},
     { "id": 6, "name": "Commercial Leasing"},

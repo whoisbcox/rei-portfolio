@@ -4,6 +4,7 @@ import { IconType } from "react-icons";
 import { SiHomeassistantcommunitystore } from "react-icons/si"
 import { FaCampground, FaHome, FaRegBuilding, FaStethoscope, FaUmbrellaBeach } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
+import { MdApartment } from "react-icons/md"
 
 interface Props {
   onSelectPropertyType: (propertyType: PropertyType) => void;
@@ -13,7 +14,8 @@ interface Props {
 const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) => {
   const { data, isLoading, error } = usePropertyTypes();
   const iconMap: {[key:number]: IconType } = {
-    1:FaHome,
+    0:FaHome,
+    1:MdApartment,
     2:FaStethoscope,
     3:FaUmbrellaBeach,
     4:FaSignHanging,
