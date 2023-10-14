@@ -30,7 +30,8 @@ const useProperties = (propertyQuery: PropertyQuery) => {
       max_bedrooms: maxBedrooms,
       min_bathrooms: minBathrooms,
       max_bathrooms: maxBathrooms, 
-      ordering: propertyQuery.sortOrder
+      ordering: propertyQuery.sortOrder,
+      search: propertyQuery.searchText
     }}, [propertyQuery])
   }
 export default useProperties;

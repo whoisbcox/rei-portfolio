@@ -14,6 +14,9 @@ app.get('/api/properties', (req, res) => {
   
   // Store sorting option if provided
   const ordering = req.query.ordering ? req.query.ordering : undefined;
+  
+  // Store sorting option if provided
+  const search = req.query.search ? req.query.search : undefined;
 
   // Parse bedroom and bathroom filters if provided
   const min_bedrooms = req.query.min_bedrooms ? parseInt(req.query.min_bedrooms) : undefined;
@@ -61,6 +64,15 @@ app.get('/api/properties', (req, res) => {
     filteredResults.sort(sortFunctions[ordering]);
   } else {
     filteredResults.sort((a, b) => a.id - b.id);
+  }
+
+  if (search) {
+    console.log(search);
+    filteredResults = filteredResults.filter((property) => {
+      const addressMatch = property.address.toLowerCase().includes(search.toLowerCase());
+      const nameMatch = property.name.toLowerCase().includes(search.toLowerCase());
+      return addressMatch || nameMatch;
+    });
   }
   
   res.status(200).send({ ...properties, results: filteredResults });

@@ -6,11 +6,13 @@ import { useState } from "react";
 import { PropertyType } from "./hooks/usePropertyTypes";
 import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
 import SortSelector from "./components/SortSelector";
+import SearchInput from "./components/SearchInput";
 
 export interface PropertyQuery {
   propertyType: PropertyType | null;
   filterSettings: FilterSettings;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -22,7 +24,8 @@ function App() {
       min_bathrooms: '',
       max_bathrooms: '',
     },
-    sortOrder: ''
+    sortOrder: '',
+    searchText: ''
   });
 
   const updateFilterSettings = (newFilterSettings: FilterSettings): void => {
@@ -47,6 +50,7 @@ function App() {
       <HStack>
         <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
         <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
+        <SearchInput onSearch={(searchText) => setPropertyQuery({...propertyQuery, searchText})} />
       </HStack>
       <PropertyGrid propertyQuery={propertyQuery} />
     </GridItem>
