@@ -1,5 +1,5 @@
 import { Property } from '../hooks/useProperties'
-import { Box, HStack, Heading, Image, Text } from '@chakra-ui/react'
+import { AspectRatio, Box, HStack, Heading, Image, Text } from '@chakra-ui/react'
 import PlatformIconList from './PlatformIconList'
 import DaysBooked from './DaysBooked'
 
@@ -10,7 +10,9 @@ interface Props {
 const PropertyCard = ({ property }: Props) => {
   return (
     <Box>
-      <Image src={property.background_image} width='100%' borderRadius={5}/>
+      <AspectRatio maxW='100%' ratio={4 / 3}>
+        <Image src={property.background_image} width='100%' objectFit='cover' borderRadius={5}/>
+      </AspectRatio>
       <Heading mt={2} fontSize={'lg'}>{property.name}</Heading>
       <HStack>
         <Text>{property.bedrooms} Bed</Text>
