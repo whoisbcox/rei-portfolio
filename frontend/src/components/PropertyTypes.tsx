@@ -1,4 +1,4 @@
-import { Button, HStack, Heading, Icon, List, ListItem, Spinner } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, HStack, Heading, Icon, List, ListItem, Spinner, Stack, Text } from "@chakra-ui/react";
 import usePropertyTypes, { PropertyType } from "../hooks/usePropertyTypes"
 import { IconType } from "react-icons";
 import { SiHomeassistantcommunitystore } from "react-icons/si"
@@ -29,18 +29,34 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
   return (
     <>
       <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
-      <List>
+      <Flex paddingBottom={2} columnGap={3}>
         {data.map((propertyType) => (
-          <ListItem key={propertyType.id} paddingY='10px'>
-            <HStack>
-              <Icon as={iconMap[propertyType.id]} boxSize={6} color='gray.500' />
-              <Button fontWeight={propertyType.id == selectedPropertyType?.id ? 'bold': 'normal'} onClick={() => onSelectPropertyType(propertyType)} fontSize='lg' variant='link'>
-                {propertyType.name}
-              </Button>
-            </HStack>
-          </ListItem>
+          <Box
+            key={propertyType.id}
+            fontSize='xs'
+            as='button'
+            border='1px'
+            borderColor={propertyType.id == selectedPropertyType?.id ? 'blue.400': 'gray.200'}
+            borderRadius={5}
+            paddingY={3}
+            paddingX={4}
+            _dark={{
+              borderColor: 'gray.600',
+              _hover: {borderColor: 'blue'}
+            }}
+            _hover={{
+              borderColor: 'blue'
+            }
+            }
+            onClick={() => onSelectPropertyType(propertyType)}
+          >
+            <Stack>
+              <Icon display='block' marginX='auto' as={iconMap[propertyType.id]} boxSize={5} color='gray.500' />
+              <Text display='block' width='100%'>{propertyType.name}</Text>
+            </Stack>
+          </Box>
         ))}
-      </List>
+      </Flex>
     </>
   )
 }

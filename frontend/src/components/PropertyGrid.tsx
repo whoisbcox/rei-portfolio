@@ -15,7 +15,7 @@ const PropertyGrid = ({propertyQuery}: Props) => {
   if (error) return <Text>{error}</Text>;
   
   return (
-    <SimpleGrid columns={{sm: 1, md: 2, lg:3, xl:4 }} padding='10px' spacing={3}>
+    <SimpleGrid columns={{sm: 1, md: 2, lg:3, xl:4 }} padding='10px' spacing={4}>
       {isLoading && skeletons.map(skeleton => <PropertyCardSkeleton key={skeleton} />)}
       {data.map(property => <Property key={property.id} property={property} />)}
     </SimpleGrid>

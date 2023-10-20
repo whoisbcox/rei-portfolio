@@ -36,21 +36,22 @@ function App() {
   return <Grid
     templateAreas={{
       base: `"nav" "main"`,
-      lg: `"nav nav" "aside main"`
+      lg: `"nav" "aside" "main"`
     }}
     templateColumns={{
-      base: '1fr',
-      lg: '240px 1fr'
+      base: '1fr'
     }}
   >
     <GridItem area="nav"><NavBar /></GridItem>
     <Show above="lg">
-      <GridItem area="aside" paddingX='10px'><PropertyTypes selectedPropertyType={propertyQuery.propertyType} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyType})} /></GridItem>
+      <GridItem area="aside" paddingX='10px'>
+        <PropertyTypes selectedPropertyType={propertyQuery.propertyType} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyType})} />
+      </GridItem>
     </Show>
     <GridItem area="main">
       <Box paddingLeft={2}>
         <PropertyHeading propertyQuery={propertyQuery}/>
-        <HStack>
+        <HStack marginTop={2} marginBottom={4}>
           <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
           <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
           <SearchInput onSearch={(searchText) => setPropertyQuery({...propertyQuery, searchText})} />

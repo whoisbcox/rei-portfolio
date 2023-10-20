@@ -9,7 +9,7 @@ interface Props {
 
 const PropertyCard = ({ property }: Props) => {
   return (
-    <Box>
+    <Box paddingBottom={6}>
       <AspectRatio maxW='100%' ratio={4 / 3}>
         <Image src={property.background_image} width='100%' objectFit='cover' borderRadius={5}/>
       </AspectRatio>
