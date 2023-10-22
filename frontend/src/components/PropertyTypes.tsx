@@ -36,16 +36,16 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
             fontSize='xs'
             as='button'
             border='1px'
-            borderColor={propertyType.id == selectedPropertyType?.id ? 'blue.400': 'gray.200'}
+            borderColor={propertyType.id == selectedPropertyType?.id ? 'green.400': 'gray.200'}
             borderRadius={5}
             paddingY={3}
             paddingX={4}
             _dark={{
               borderColor: 'gray.600',
-              _hover: {borderColor: 'blue'}
+              _hover: {borderColor: 'green.400'}
             }}
             _hover={{
-              borderColor: 'blue'
+              borderColor: 'green.400'
             }
             }
             onClick={() => onSelectPropertyType(propertyType)}

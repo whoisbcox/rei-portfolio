@@ -8,7 +8,7 @@ const NavBar = () => {
       <Image src={logo} width='200px' height='60px' />
       <HStack>
         <Link>Login</Link>
-        <Button variant='outline' marginLeft={2}>Signup</Button>
+        <Button variant='outline' colorScheme='green' marginLeft={2}>Signup</Button>
       </HStack>
       <ColorModeSwitch />
     </HStack>
