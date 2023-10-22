@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Flex, HStack, Heading, Icon, List, ListItem, Spinner, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Icon, Spinner, Stack, Text } from "@chakra-ui/react";
 import usePropertyTypes, { PropertyType } from "../hooks/usePropertyTypes"
 import { IconType } from "react-icons";
 import { SiHomeassistantcommunitystore } from "react-icons/si"
@@ -30,7 +30,7 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
     <>
       <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
       <Flex paddingBottom={2} columnGap={3}>
-        {data.map((propertyType) => (
+        {data?.results.map((propertyType) => (
           <Box
             key={propertyType.id}
             fontSize='xs'
