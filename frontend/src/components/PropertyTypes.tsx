@@ -30,7 +30,7 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
     <>
       <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
       <Flex paddingBottom={2} columnGap={3}>
-        {data?.results.map((propertyType) => (
+        {data?.results.map((propertyType: PropertyType) => (
           <Box
             key={propertyType.id}
             fontSize='xs'

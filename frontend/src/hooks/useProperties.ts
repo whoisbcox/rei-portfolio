@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { PropertyQuery } from '../App';
-import apiClient from '../services/api-client';
-import { FetchResponse } from '../services/api-client';
+import APIClient from '../services/api-client';
+
+const apiClient = new APIClient<Property[]>('/api/properties');
 
 export interface Platform {
   id: number;
@@ -25,11 +26,11 @@ const useProperties = (propertyQuery: PropertyQuery) => {
   const minBathrooms = propertyQuery.filterSettings?.min_bathrooms !== '' ? propertyQuery.filterSettings?.min_bathrooms : null;
   const maxBathrooms = propertyQuery.filterSettings?.max_bathrooms !== '' ? propertyQuery.filterSettings?.max_bathrooms : null;
   
-  return  useQuery<FetchResponse<Property>, Error>({
+  return  useQuery({
     queryKey: ['properties', propertyQuery],
     queryFn: () =>
       apiClient
-        .get<FetchResponse<Property>>('/api/properties', {
+        .getAll({
           params: {
             propertyTypes: propertyQuery.propertyType?.id,
             min_bedrooms: minBedrooms,
@@ -38,9 +39,8 @@ const useProperties = (propertyQuery: PropertyQuery) => {
             max_bathrooms: maxBathrooms, 
             ordering: propertyQuery.sortOrder,
             search: propertyQuery.searchText
-          }
-        })
-        .then(res => res.data),
+          },
+        }),
   })
 }
 export default useProperties;
