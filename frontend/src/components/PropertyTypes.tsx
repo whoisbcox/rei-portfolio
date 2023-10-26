@@ -8,10 +8,10 @@ import { MdApartment } from "react-icons/md"
 
 interface Props {
   onSelectPropertyType: (propertyType: PropertyType) => void;
-  selectedPropertyType: PropertyType | null;
+  selectedPropertyTypeId?: number;
 }
 
-const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) => {
+const PropertyTypes = ({ selectedPropertyTypeId, onSelectPropertyType }: Props) => {
   const { data, isLoading, error } = usePropertyTypes();
   const iconMap: {[key:number]: IconType } = {
     0:FaHome,
@@ -36,7 +36,7 @@ const PropertyTypes = ({ selectedPropertyType, onSelectPropertyType }: Props) =>
             fontSize='xs'
             as='button'
             border='1px'
-            borderColor={propertyType.id == selectedPropertyType?.id ? 'green.400': 'gray.200'}
+            borderColor={propertyType.id == selectedPropertyTypeId ? 'green.400': 'gray.200'}
             borderRadius={5}
             paddingY={3}
             paddingX={4}

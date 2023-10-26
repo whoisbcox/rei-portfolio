@@ -32,7 +32,7 @@ const useProperties = (propertyQuery: PropertyQuery) => {
       apiClient
         .getAll({
           params: {
-            propertyTypes: propertyQuery.propertyType?.id,
+            propertyTypes: propertyQuery.propertyTypeId,
             min_bedrooms: minBedrooms,
             max_bedrooms: maxBedrooms,
             min_bathrooms: minBathrooms,
