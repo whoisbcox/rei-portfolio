@@ -5,14 +5,12 @@ import { SiHomeassistantcommunitystore } from "react-icons/si"
 import { FaCampground, FaHome, FaRegBuilding, FaStethoscope, FaUmbrellaBeach } from "react-icons/fa"
 import { FaSignHanging } from "react-icons/fa6"
 import { MdApartment } from "react-icons/md"
+import usePropertyQueryStore from "../store";
 
-interface Props {
-  onSelectPropertyType: (propertyType: PropertyType) => void;
-  selectedPropertyTypeId?: number;
-}
-
-const PropertyTypes = ({ selectedPropertyTypeId, onSelectPropertyType }: Props) => {
+const PropertyTypes = () => {
   const { data, isLoading, error } = usePropertyTypes();
+  const propertyTypeId = usePropertyQueryStore(s => s.propertyQuery.propertyTypeId);
+  const setPropertyTypeId = usePropertyQueryStore(s => s.setPropertyTypeId);
   const iconMap: {[key:number]: IconType } = {
     0:FaHome,
     1:MdApartment,
@@ -23,7 +21,7 @@ const PropertyTypes = ({ selectedPropertyTypeId, onSelectPropertyType }: Props) 
     6:FaRegBuilding,
     7:FaCampground,
   }
-
+  
   if (error) return null;
   if (isLoading) return <Spinner />;
   return (
@@ -36,7 +34,7 @@ const PropertyTypes = ({ selectedPropertyTypeId, onSelectPropertyType }: Props) 
             fontSize='xs'
             as='button'
             border='1px'
-            borderColor={propertyType.id == selectedPropertyTypeId ? 'green.400': 'gray.200'}
+            borderColor={propertyType.id == propertyTypeId ? 'green.400': 'gray.200'}
             borderRadius={5}
             paddingY={3}
             paddingX={4}
@@ -48,7 +46,7 @@ const PropertyTypes = ({ selectedPropertyTypeId, onSelectPropertyType }: Props) 
               borderColor: 'green.400'
             }
             }
-            onClick={() => onSelectPropertyType(propertyType)}
+            onClick={() => setPropertyTypeId(propertyType.id)}
           >
             <Stack>
               <Icon display='block' marginX='auto' as={iconMap[propertyType.id]} boxSize={5} color='gray.500' />

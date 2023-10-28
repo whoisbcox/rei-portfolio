@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { PropertyQuery } from '../App';
 import APIClient from '../services/api-client';
+import usePropertyQueryStore from '../store';
 
 const apiClient = new APIClient<Property[]>('/api/properties');
 
@@ -20,7 +20,8 @@ export interface Property {
   bathrooms: number;
 }
 
-const useProperties = (propertyQuery: PropertyQuery) => {
+const useProperties = () => {
+  const propertyQuery = usePropertyQueryStore(s => s.propertyQuery);
   const minBedrooms = propertyQuery.filterSettings?.min_bedrooms !== '' ? propertyQuery.filterSettings?.min_bedrooms : null;
   const maxBedrooms = propertyQuery.filterSettings?.max_bedrooms !== '' ? propertyQuery.filterSettings?.max_bedrooms : null;
   const minBathrooms = propertyQuery.filterSettings?.min_bathrooms !== '' ? propertyQuery.filterSettings?.min_bathrooms : null;

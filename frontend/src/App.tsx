@@ -2,35 +2,12 @@ import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import PropertyGrid from "./components/PropertyGrid";
 import PropertyTypes from "./components/PropertyTypes";
-import { useState } from "react";
-import PropertyFilter, { FilterSettings } from "./components/PropertyFilter";
+import PropertyFilter from "./components/PropertyFilter";
 import SortSelector from "./components/SortSelector";
 import SearchInput from "./components/SearchInput";
 import PropertyHeading from "./components/PropertyHeading";
 
-export interface PropertyQuery {
-  propertyTypeId?: number;
-  filterSettings: FilterSettings;
-  sortOrder: string;
-  searchText: string;
-}
-
-function App() {
-  const [propertyQuery, setPropertyQuery ] = useState<PropertyQuery>({
-    filterSettings: {
-      min_bedrooms: '',
-      max_bedrooms: '',
-      min_bathrooms: '',
-      max_bathrooms: '',
-    },
-    sortOrder: '',
-    searchText: ''
-  });
-
-  const updateFilterSettings = (newFilterSettings: FilterSettings): void => {
-    setPropertyQuery({...propertyQuery, filterSettings: newFilterSettings});
-  }
-  
+function App() {  
   return <Grid
     templateAreas={{
       base: `"nav" "main"`,
@@ -43,19 +20,19 @@ function App() {
     <GridItem area="nav"><NavBar /></GridItem>
     <Show above="lg">
       <GridItem area="aside" paddingX='10px'>
-        <PropertyTypes selectedPropertyTypeId={propertyQuery.propertyTypeId} onSelectPropertyType={(propertyType)=> setPropertyQuery({...propertyQuery, propertyTypeId: propertyType.id})} />
+        <PropertyTypes />
       </GridItem>
     </Show>
     <GridItem area="main">
       <Box paddingLeft={2}>
-        <PropertyHeading propertyQuery={propertyQuery}/>
+        <PropertyHeading />
         <HStack marginTop={2} marginBottom={4}>
-          <PropertyFilter filterSettings={propertyQuery.filterSettings} updateFilterSettings={updateFilterSettings} />
-          <SortSelector sortOrder={propertyQuery.sortOrder} onSelectSortOrder={(sortOrder) => setPropertyQuery({...propertyQuery, sortOrder})} />
-          <SearchInput onSearch={(searchText) => setPropertyQuery({...propertyQuery, searchText})} />
+          <PropertyFilter />
+          <SortSelector />
+          <SearchInput />
         </HStack>
       </Box>
-      <PropertyGrid propertyQuery={propertyQuery} />
+      <PropertyGrid />
     </GridItem>
   </Grid>;
 }

@@ -1,17 +1,16 @@
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
+import usePropertyQueryStore from '../store';
 
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
-}
-
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: '', label: 'Relevance' },
     { value: 'availability', label: 'Availability' },
     { value: 'name', label: 'Name' },
   ];
+
+  const sortOrder = usePropertyQueryStore(s => s.propertyQuery.sortOrder);
+  const setSortOrder = usePropertyQueryStore(s => s.sortOrder);
 
   const currentSortOrder = sortOrders.find(order => order.value === sortOrder);
   return (
@@ -22,7 +21,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
           Order by: {currentSortOrder?.label || 'Relevance'}
         </MenuButton>
         <MenuList>
-          {sortOrders.map(order => <MenuItem onClick={() => onSelectSortOrder(order.value)} key={order.value} value={order.value}>{order.label}</MenuItem>)}
+          {sortOrders.map(order => <MenuItem onClick={() => setSortOrder(order.value)} key={order.value} value={order.value}>{order.label}</MenuItem>)}
         </MenuList>
       </Menu>
     </Box>

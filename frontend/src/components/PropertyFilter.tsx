@@ -1,6 +1,7 @@
 import { Box, HStack, Select, Text } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import useMinMaxSelect from '../hooks/useMinMaxSelect';
+import usePropertyQueryStore from '../store';
 
 export interface FilterSettings {
   min_bedrooms: string,
@@ -9,14 +10,11 @@ export interface FilterSettings {
   max_bathrooms: string,
 }
 
-interface Props {
-  filterSettings: FilterSettings;
-  updateFilterSettings: (newFilterSettings: FilterSettings) => void;
-}
-
-const PropertyFilter = ({ filterSettings, updateFilterSettings }: Props) => {
+const PropertyFilter = () => {
+  const filterSettings = usePropertyQueryStore(s => s.propertyQuery.filterSettings);
+  const { setFilterSettings } = usePropertyQueryStore();
   const rooms = [1, 2, 3, 4, 5];
-
+  
   const createChangeHandler = (
     minMax: 'min' | 'max',
     type: 'bedrooms' | 'bathrooms',
@@ -33,7 +31,7 @@ const PropertyFilter = ({ filterSettings, updateFilterSettings }: Props) => {
         [`max_${type}`]: value,
       };
       updateFunction(value); // Update the minimum value
-      updateFilterSettings(newFilterSettings); // Update parent component state
+      setFilterSettings(newFilterSettings); // Update parent component state
     } else if (minMax === 'max' && parseInt(value, 10) < parseInt(filterSettings[`min_${type}`], 10)) {
       // If the new maximum value is less than the current minimum, update the minimum value
       const newFilterSettings: FilterSettings = {
@@ -42,7 +40,7 @@ const PropertyFilter = ({ filterSettings, updateFilterSettings }: Props) => {
         [`max_${type}`]: value,
       };
       updateFunction(value); // Update the maximum value
-      updateFilterSettings(newFilterSettings); // Update parent component state
+      setFilterSettings(newFilterSettings); // Update parent component state
     } else {
       // Otherwise, update the corresponding value normally
       const newFilterSettings: FilterSettings = {
@@ -51,7 +49,7 @@ const PropertyFilter = ({ filterSettings, updateFilterSettings }: Props) => {
         [`max_${type}`]: minMax === 'max' ? value : filterSettings[`max_${type}`],
       };
       updateFunction(value);
-      updateFilterSettings(newFilterSettings);
+      setFilterSettings(newFilterSettings);
     }
   };
 
