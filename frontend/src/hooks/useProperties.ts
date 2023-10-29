@@ -13,6 +13,8 @@ export interface Platform {
 export interface Property {
   id: number;
   name: string;
+  slug: string;
+  address: string;
   background_image: string;
   platforms: Platform[];
   days_booked: number;

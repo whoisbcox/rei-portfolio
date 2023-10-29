@@ -16,24 +16,24 @@ const HomePage = () => {
     templateColumns={{
       base: '1fr'
     }}
-  >
-    <Show above="lg">
-      <GridItem area="aside" paddingX='10px'>
-        <PropertyTypes />
+    >
+      <Show above="lg">
+        <GridItem area="aside" paddingX='10px'>
+          <PropertyTypes />
+        </GridItem>
+      </Show>
+      <GridItem area="main">
+        <Box paddingLeft={2}>
+          <PropertyHeading />
+          <HStack marginTop={2} marginBottom={4}>
+            <PropertyFilter />
+            <SortSelector />
+            <SearchInput />
+          </HStack>
+        </Box>
+        <PropertyGrid />
       </GridItem>
-    </Show>
-    <GridItem area="main">
-      <Box paddingLeft={2}>
-        <PropertyHeading />
-        <HStack marginTop={2} marginBottom={4}>
-          <PropertyFilter />
-          <SortSelector />
-          <SearchInput />
-        </HStack>
-      </Box>
-      <PropertyGrid />
-    </GridItem>
-  </Grid>
+    </Grid>
   )
 }
 
