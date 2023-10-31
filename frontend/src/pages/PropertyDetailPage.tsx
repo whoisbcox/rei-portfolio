@@ -10,7 +10,7 @@ const PropertyDetailPage = () => {
 
   if (error || !property) throw error;
 
-  const {address, bedrooms, bathrooms } = property;
+  const {description, bedrooms, bathrooms } = property;
   const bedroomsText = 1 !== bedrooms? `${bedrooms} bedrooms`: `${bedrooms} bedroom`;
   const bathroomsText = 1 !== bathrooms? `${bathrooms} bathrooms`: `${bathrooms} bathroom`;
 
@@ -34,7 +34,7 @@ const PropertyDetailPage = () => {
         </AspectRatio>
       </GridItem>
       <GridItem area="main">
-        <Heading fontSize={'3xl'}>{address}</Heading>
+        <Heading fontSize={'3xl'}>{description}</Heading>
         <Text>{0 < bedrooms ? bedroomsText: ''} {0 < bathrooms? bathroomsText: ''}</Text>
       </GridItem>
       <GridItem area="aside">[sidebar]</GridItem>

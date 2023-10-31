@@ -14,7 +14,14 @@ export interface Property {
   id: number;
   name: string;
   slug: string;
-  address: string;
+  description: string;
+  address: {
+    street_1: string;
+    street_2: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
   background_image: string;
   platforms: Platform[];
   days_booked: number;

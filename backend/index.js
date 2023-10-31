@@ -10,24 +10,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/reiportfolio')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB', err));
 
-const propertySchema = new mongoose.Schema({
-  name: String,
-  slug: String,
-  address: String,
-  background_image: String,
-  platforms: [{
-    id: Number,
-    name: String,
-    slug: String,
-    url: String,
-  }],
-  bedrooms: Number,
-  bathrooms: Number,
-  days_booked: Number,
-  propertyTypes: Number
-});
 
-const Property = new mongoose.model('Property', propertySchema);
 
 // async function createProperty() {
 //   const property = new Property({
