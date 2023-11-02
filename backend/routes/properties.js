@@ -1,11 +1,10 @@
+const { Properties } = require('../models/properties');
 const express = require('express');
 const router = express.Router();
 
-const properties = require('../data/properties.json');
-
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
   // Parse query parameters for propertyTypes
-  const selectedPropertyTypes = parseInt(req.query.propertyTypes);
+  const selectedPropertyTypes = req.query.propertyTypes;
   
   // Store sorting option if provided
   const ordering = req.query.ordering ? req.query.ordering : undefined;
@@ -20,11 +19,11 @@ router.get('/', (req, res) => {
   const max_bathrooms = req.query.max_bathrooms ? parseInt(req.query.max_bathrooms) : undefined;
 
   // Start with all properties
-  let filteredResults = properties.results;
+  let filteredResults = await Properties.find().populate('propertyTypes');
 
   // Filter based on selected property types, if provided
   if (selectedPropertyTypes) {
-    filteredResults = filteredResults.filter((property) => property.propertyTypes === selectedPropertyTypes);
+    filteredResults = filteredResults.filter((property) => property.propertyTypes._id.toHexString() === selectedPropertyTypes);
   }
 
   // Filter based on bedrooms, if filter parameters are provided
@@ -62,40 +61,36 @@ router.get('/', (req, res) => {
   }
 
   if (search) {
-    console.log(search);
     filteredResults = filteredResults.filter((property) => {
-      const addressMatch = property.address.toLowerCase().includes(search.toLowerCase());
+      console.log(property.address);
+      // const street1Match = property.address.street_1.toLowerCase().includes(search.toLowerCase());
+      // const street2Match = property.address.street_2.toLowerCase().includes(search.toLowerCase());
       const nameMatch = property.name.toLowerCase().includes(search.toLowerCase());
-      return addressMatch || nameMatch;
+      return nameMatch;
     });
   }
   
-  res.status(200).send({ ...properties, results: filteredResults });
+  res.status(200).send({ ...filteredResults });
 });
 
-router.get('/:id', (req, res) => {
-  const property = properties.results.find(p => p.id === parseInt(req.params.id));
+router.get('/:id', async (req, res) => {
+  const property = await Properties.findById(req.params.id);
   if (!property) return res.status(400).send('The property with the given ID was not found');
   res.status(200).send(property);
 });
 
-router.post('/', (req, res) => {
-  const property = {
-    id: properties.results.length + 1,
-    name: req.body.name
-  }
+router.post('/', async (req, res) => {
+  let property = new Properties({ ...req.body });
 
-  properties.results.push(property);
+  property = await property.save();
   res.send(property);
 });
 
-router.delete('/:id', (req, res) => {
-  const property = properties.results.find(p => p.id === parseInt(req.params.id));
+router.delete('/:id', async(req, res) => {
+  const property = await Properties.findByIdAndRemove(req.params.id); 
   if (!property) return res.status(400).send('The property with the given ID was not found');
 
-  const index = properties.results.indexOf(property);
-  properties.results.splice(index, 1);
-  res.send(properties);
+  res.send(property);
 });
 
 module.exports = router;

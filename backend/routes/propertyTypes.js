@@ -1,35 +1,40 @@
+const { PropertyTypes } = require('../models/propertyTypes');
 const express = require('express');
 const router = express.Router();
 
-const propertyTypes = require('../data/propertyTypes.json');
-
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const propertyTypes = await PropertyTypes.find();
   res.status(200).send(propertyTypes);
 });
 
-router.get('/:id', (req, res) => {
-  const propertyType = propertyTypes.results.find(p => p.id === parseInt(req.params.id));
+router.get('/:id', async (req, res) => {
+  const propertyType = await PropertyTypes.findById(req.params.id);
+  
   if (!propertyType) return res.status(400).send('The property type with the given ID was not found');
   res.status(200).send(propertyType);
 });
 
-router.post('/', (req, res) => {
-  const propertyType = {
-    id: propertyTypes.results.length + 1,
-    name: req.body.name
-  }
+router.post('/', async (req, res) => {
+  let propertyType = new PropertyTypes({ icon: req.body.icon, name: req.body.name });
 
-  propertyTypes.results.push(propertyType);
+  propertyType = await propertyType.save();
   res.send(propertyType);
 });
 
-router.delete('/:id', (req, res) => {
-  const propertyType = propertyTypes.results.find(p => p.id === parseInt(req.params.id));
+router.put('/:id', async (req, res) => {
+  const propertyType = await PropertyTypes.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true });
+
+  if (!propertyType) return res.status(404).send('This property type with the given ID was not found');
+
+  res.send(propertyType);
+});
+
+router.delete('/:id', async(req, res) => {
+  const propertyType = await PropertyTypes.findByIdAndRemove(req.params.id);
+
   if (!propertyType) return res.status(400).send('The property type with the given ID was not found');
 
-  const index = propertyTypes.results.indexOf(propertyType);
-  propertyTypes.results.splice(index, 1);
-  res.send(propertyTypes);
+  res.send(propertyType);
 });
 
 module.exports = router;

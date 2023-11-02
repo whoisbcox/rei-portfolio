@@ -1,13 +1,13 @@
 {
   "count": 8,
   "results": [
-    { "id": 0, "name": "All Listings"},
-    { "id": 1, "name": "Long Term Rentals"},
-    { "id": 2, "name": "Mid Term Rentals"},
-    { "id": 3, "name": "Short Term Rentals"},
-    { "id": 4, "name": "Residential For Sale"},
-    { "id": 5, "name": "Commercial For Sale"},
-    { "id": 6, "name": "Commercial Leasing"},
-    { "id": 7, "name": "Land For Sale"}
+    { "icon": 0, "name": "All Listings"},
+    { "icon": 1, "name": "Long Term Rentals"},
+    { "icon": 2, "name": "Mid Term Rentals"},
+    { "icon": 3, "name": "Short Term Rentals"},
+    { "icon": 4, "name": "Residential For Sale"},
+    { "icon": 5, "name": "Commercial For Sale"},
+    { "icon": 6, "name": "Commercial Leasing"},
+    { "icon": 7, "name": "Land For Sale"}
   ]
 }

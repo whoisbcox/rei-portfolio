@@ -28,13 +28,13 @@ const PropertyTypes = () => {
     <>
       <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
       <Flex paddingBottom={2} columnGap={3}>
-        {data?.results.map((propertyType: PropertyType) => (
+        {data?.map((propertyType: PropertyType) => (
           <Box
-            key={propertyType.id}
+            key={propertyType._id}
             fontSize='xs'
             as='button'
             border='1px'
-            borderColor={propertyType.id == propertyTypeId ? 'green.400': 'gray.200'}
+            borderColor={propertyType._id == propertyTypeId ? 'green.400': 'gray.200'}
             borderRadius={5}
             paddingY={3}
             paddingX={4}
@@ -46,10 +46,10 @@ const PropertyTypes = () => {
               borderColor: 'green.400'
             }
             }
-            onClick={() => setPropertyTypeId(propertyType.id)}
+            onClick={() => setPropertyTypeId('All Listings' !== propertyType.name ? propertyType._id : undefined)}
           >
             <Stack>
-              <Icon display='block' marginX='auto' as={iconMap[propertyType.id]} boxSize={5} color='gray.500' />
+              <Icon display='block' marginX='auto' as={iconMap[propertyType.icon]} boxSize={5} color='gray.500' />
               <Text display='block' width='100%'>{propertyType.name}</Text>
             </Stack>
           </Box>

@@ -2,31 +2,32 @@ import { useQuery } from '@tanstack/react-query';
 import APIClient from '../services/api-client';
 import usePropertyQueryStore from '../store';
 
-const apiClient = new APIClient<Property[]>('/api/properties');
+const apiClient = new APIClient<Property>('/api/properties');
 
 export interface Platform {
+  _id: number;
   id: number;
   name: string;
   slug: string;
 }
 
 export interface Property {
-  id: number;
-  name: string;
-  slug: string;
-  description: string;
-  address: {
-    street_1: string;
-    street_2: string;
-    city: string;
-    state: string;
-    zip: string;
-  };
-  background_image: string;
-  platforms: Platform[];
-  days_booked: number;
-  bedrooms: number;
-  bathrooms: number;
+    _id: number;
+    name: string;
+    slug: string;
+    description: string;
+    address: {
+      street_1: string;
+      street_2: string;
+      city: string;
+      state: string;
+      zip: string;
+    };
+    background_image: string;
+    platforms: Platform[];
+    days_booked: number;
+    bedrooms: number;
+    bathrooms: number;
 }
 
 const useProperties = () => {

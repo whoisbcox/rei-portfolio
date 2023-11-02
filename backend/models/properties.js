@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const Property = new mongoose.model('Property', new mongoose.Schema({
+const Properties = mongoose.model('Properties', new mongoose.Schema({
   name: String,
   slug: String,
-  address: [{
+  address: {
     street_1: String,
     street_2: String,
     city: String,
     state: String,
     zip: String,
-  }],
+  },
   description: String,
   background_image: String,
   platforms: [{
@@ -21,7 +21,10 @@ const Property = new mongoose.model('Property', new mongoose.Schema({
   bedrooms: Number,
   bathrooms: Number,
   days_booked: Number,
-  propertyTypes: Number
+  propertyTypes: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'PropertyTypes'
+  }
 }));
 
-exports.Property = Property;
+exports.Properties = Properties;

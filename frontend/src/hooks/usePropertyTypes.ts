@@ -5,7 +5,8 @@ import ms from 'ms';
 const apiClient = new APIClient<PropertyType[]>('/api/property-types');
 
 export interface PropertyType {
-  id: number;
+  _id: number;
+  icon: number;
   name: string;
 }
 

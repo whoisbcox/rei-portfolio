@@ -11,7 +11,7 @@ interface Props {
 const PropertyCard = ({ property }: Props) => {
   return (
     <Box paddingBottom={6}>
-        <Link to={`/properties/${property.id}`} >
+        <Link to={`/properties/${property._id}`} >
           <AspectRatio maxW='100%' ratio={4 / 3}>
             <Image
               src={property.background_image}
@@ -29,7 +29,7 @@ const PropertyCard = ({ property }: Props) => {
         color: 'green.400',
         transition: 'color .25s ease'
       }}>
-        <Link to={`/properties/${property.id}`} >
+        <Link to={`/properties/${property._id}`} >
           {property.name}
         </Link>
       </Heading>
