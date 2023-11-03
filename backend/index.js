@@ -1,10 +1,18 @@
+const config = require('config');
 const mongoose = require('mongoose');
 const properties = require('./routes/properties');
 const propertyTypes = require('./routes/propertyTypes');
+const users = require('./routes/users');
+const auth = require('./routes/auth');
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
+
+if (!config.get('jwtPrivateKey')) {
+  console.error('FATAL ERROR: jwtPrivateKey is not defined');
+  process.exit(1);
+}
 
 mongoose.connect('mongodb://127.0.0.1:27017/reiportfolio')
   .then(() => console.log('Connected to MongoDB...'))
@@ -14,6 +22,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/properties', properties);
 app.use('/api/property-types', propertyTypes);
+app.use('/api/users', users);
+app.use('/api/auth', auth);
 
 app.listen(
   PORT,
