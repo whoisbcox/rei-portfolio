@@ -1,3 +1,4 @@
+const auth = require('../middleware/auth');
 const { Properties, validate } = require('../models/properties');
 const express = require('express');
 const router = express.Router();
@@ -79,7 +80,7 @@ router.get('/:id', async (req, res) => {
   res.status(200).send(property);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { error, value } = validate(req.body);
   if ( error ) return res.status(400).send(error.message);
   
@@ -89,7 +90,7 @@ router.post('/', async (req, res) => {
   res.send(property);
 });
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
   const property = await Properties.findByIdAndRemove(req.params.id); 
   if (!property) return res.status(400).send('The property with the given ID was not found');
 
