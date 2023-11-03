@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const { PropertyTypes } = require('../models/propertyTypes');
 const express = require('express');
 const router = express.Router();
@@ -15,6 +16,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const { error } = validatePropertyType(req.body);
+  if ( error ) return res.status(400).send(error.message);
+
   let propertyType = new PropertyTypes({ icon: req.body.icon, name: req.body.name });
 
   propertyType = await propertyType.save();
@@ -36,5 +40,14 @@ router.delete('/:id', async(req, res) => {
 
   res.send(propertyType);
 });
+
+function validatePropertyType(propertyType) {
+  const schema = Joi.object({
+    name: Joi.string().min(5).max(255).required(),
+    icon: Joi.number().required()
+  });
+
+  return schema.validate(propertyType);
+}
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const { Properties } = require('../models/properties');
 const express = require('express');
 const router = express.Router();
@@ -80,6 +81,9 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  const { error, value } = validateProperty(req.body);
+  if ( error ) return res.status(400).send(error.message);
+  
   let property = new Properties({ ...req.body });
 
   property = await property.save();
@@ -92,5 +96,31 @@ router.delete('/:id', async(req, res) => {
 
   res.send(property);
 });
+
+function validateProperty(property) {
+  const schema = Joi.object({
+    name: Joi.string().min(5).max(255).required(),
+    address: Joi.object({
+      street_1: Joi.string().min(3).max(50).required(),
+      street_2: Joi.string().allow(null, '').required(),
+      city: Joi.string().min(3).max(50).required(),
+      state: Joi.string().length(2).required(),
+      zip: Joi.string().regex(/^\d{5}(?:-\d{4})?$/),
+    }),
+    description: Joi.string().min(3).required(),
+    background_image: Joi.string().uri().allow(null, '').required(),
+    platforms: Joi.array().items(Joi.object({
+      name: Joi.string(),
+      slug: Joi.string(),
+      url: Joi.string().uri(),
+    })).allow(null, ''),
+    bedrooms: Joi.number().integer().min(0).required(),
+    bathrooms: Joi.number().integer().min(0).required(),
+    days_booked: Joi.number().integer().min(0).max(100).allow(null, ''),
+    propertyTypes: Joi.string().required()
+  });
+
+  return schema.validate(property);
+}
 
 module.exports = router;

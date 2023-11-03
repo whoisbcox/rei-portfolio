@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Properties = mongoose.model('Properties', new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true, minlength: 5, maxlength: 255 },
   slug: String,
   address: {
     street_1: String,
