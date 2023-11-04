@@ -5,6 +5,10 @@ import PropertyDetailPage from "./pages/PropertyDetailPage";
 import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import Dashboard from "./pages/Dashboard";
+import DashboardListings from "./pages/DashboardListings";
+import DashboardProfile from "./pages/DashboardProfile";
+import DashboardUsers from "./pages/DashboardUsers";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +20,16 @@ const router = createBrowserRouter([
       { path: 'properties/:id', element: <PropertyDetailPage />},
       { path: '/login', element: <LoginPage />},
       { path: '/signup', element: <SignupPage />},
+    ]
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: '/dashboard/listings', element: <DashboardListings />},
+      { path: '/dashboard/profile', element: <DashboardProfile />},
+      { path: '/dashboard/users', element: <DashboardUsers />},
     ]
   }
 ])
