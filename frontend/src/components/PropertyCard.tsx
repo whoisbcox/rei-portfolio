@@ -14,7 +14,7 @@ const PropertyCard = ({ property }: Props) => {
         <Link to={`/properties/${property._id}`} >
           <AspectRatio maxW='100%' ratio={4 / 3}>
             <Image
-              src={property.background_image}
+              src={property.featured_image}
               width='100%'
               objectFit='cover'
               borderRadius={5}

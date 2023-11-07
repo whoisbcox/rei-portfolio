@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import DashboardListings from "./pages/DashboardListings";
 import DashboardProfile from "./pages/DashboardProfile";
 import DashboardUsers from "./pages/DashboardUsers";
+import DashboardListingsAdd from "./pages/DashboardListingsAdd";
+import DashboardListingsEdit from "./pages/DashboardListingsEdit";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: '/dashboard/listings', element: <DashboardListings />},
+      { path: '/dashboard/listings/new', element: <DashboardListingsAdd />},
+      { path: '/dashboard/listings/:id', element: <DashboardListingsEdit />},
       { path: '/dashboard/profile', element: <DashboardProfile />},
       { path: '/dashboard/users', element: <DashboardUsers />},
     ]

@@ -2,18 +2,32 @@ import { Button, HStack, Image } from "@chakra-ui/react"
 import logo from "../assets/logo.svg"
 import ColorModeSwitch from "./ColorModeSwitch"
 import { Link } from "react-router-dom"
+// import React from 'react'
+import { useLocation } from 'react-router'
 
 const NavBar = () => {
+  const location = useLocation();
+  const isDashboardPage = location.pathname.includes('/dashboard');
+
+  function handleClick(e: React.SyntheticEvent) {
+    e.preventDefault();
+    console.log('logout');
+  }
   return (
     <HStack justifyContent='space-between' padding='10px' borderBottom='1px' borderColor='gray.200'>
       <Link to={`/`}>
         <Image src={logo} width='200px' height='60px' />
       </Link>
       <HStack>
-        <Link to={'/login'}>Login</Link>
-        <Link to={'/signup'}>
-          <Button variant='outline' colorScheme='green' marginLeft={2}>Signup</Button>
-        </Link>
+        {isDashboardPage ? <Button variant='link' onClick={handleClick}>Logout</Button>:<Link to={'/login'}>Login</Link>}
+        {isDashboardPage ? 
+          <Link to={'/dashboard/profile'}>
+            <Button variant='outline' colorScheme='green' marginLeft={2}>Settings</Button>
+          </Link>:
+          <Link to={'/signup'}>
+            <Button variant='outline' colorScheme='green' marginLeft={2}>Signup</Button>
+          </Link>
+        }
       </HStack>
       <ColorModeSwitch />
     </HStack>

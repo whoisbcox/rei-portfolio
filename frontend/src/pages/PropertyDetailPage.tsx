@@ -30,7 +30,7 @@ const PropertyDetailPage = () => {
       <GridItem area="hero" py={8}>
         <Heading mb={4}>{property.name}</Heading>
         <AspectRatio maxW='100%' minH={{base:'240px', lg:'320px'}} maxH={{base:'400px',lg:'500px'}} height={{base:'50vh',lg:'70vh'}}>
-          <Image src={property.background_image} width='100%' objectFit='cover' borderRadius={5}/>
+          <Image src={property.featured_image} width='100%' objectFit='cover' borderRadius={5}/>
         </AspectRatio>
       </GridItem>
       <GridItem area="main">

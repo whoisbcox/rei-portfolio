@@ -12,7 +12,7 @@ const Properties = mongoose.model('Properties', new mongoose.Schema({
     zip: String,
   },
   description: String,
-  background_image: String,
+  featured_image: String,
   platforms: [{
     id: Number,
     name: String,
@@ -39,7 +39,7 @@ function validateProperty(property) {
       zip: Joi.string().regex(/^\d{5}(?:-\d{4})?$/),
     }),
     description: Joi.string().min(3).required(),
-    background_image: Joi.string().uri().allow(null, '').required(),
+    featured_image: Joi.string().uri().allow(null, '').required(),
     platforms: Joi.array().items(Joi.object({
       name: Joi.string(),
       slug: Joi.string(),

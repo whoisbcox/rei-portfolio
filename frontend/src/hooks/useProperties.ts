@@ -12,7 +12,7 @@ export interface Platform {
 }
 
 export interface Property {
-    _id: number;
+    _id: string;
     name: string;
     slug: string;
     description: string;
@@ -23,11 +23,12 @@ export interface Property {
       state: string;
       zip: string;
     };
-    background_image: string;
+    featured_image: string;
     platforms: Platform[];
     days_booked: number;
     bedrooms: number;
     bathrooms: number;
+    propertyTypes: string;
 }
 
 const useProperties = () => {

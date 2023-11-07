@@ -5,13 +5,16 @@ const DashboardNav = () => {
   return (
     <List>
       <ListItem>
-        <Link to="/dashboard/listings">Listings</Link>
+        <Link to={'/dashboard/listings/new'}>Add New Listing</Link>
       </ListItem>
       <ListItem>
-        <Link to="/dashboard/profile">Profile</Link>
+        <Link to="/dashboard/listings">Manage Listings</Link>
       </ListItem>
       <ListItem>
-        <Link to="/dashboard/users">Users</Link>
+        <Link to="/dashboard/profile">Edit Profile</Link>
+      </ListItem>
+      <ListItem>
+        <Link to="/dashboard/users">Manage Users</Link>
       </ListItem>
     </List>
   )

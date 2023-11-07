@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Link, List, ListItem } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
 import DashboardNav from '../components/DashboardNav'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
