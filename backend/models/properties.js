@@ -2,6 +2,7 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const Properties = mongoose.model('Properties', new mongoose.Schema({
+  user: String,
   name: { type: String, required: true, minlength: 5, maxlength: 255 },
   slug: String,
   address: {
@@ -30,6 +31,7 @@ const Properties = mongoose.model('Properties', new mongoose.Schema({
 
 function validateProperty(property) {
   const schema = Joi.object({
+    user: Joi.string(),
     name: Joi.string().min(5).max(255).required(),
     address: Joi.object({
       street_1: Joi.string().min(3).max(50).required(),
@@ -39,7 +41,8 @@ function validateProperty(property) {
       zip: Joi.string().regex(/^\d{5}(?:-\d{4})?$/),
     }),
     description: Joi.string().min(3).required(),
-    featured_image: Joi.string().uri().allow(null, '').required(),
+    // featured_image: Joi.string().uri().allow(null, ''),
+    featured_image: Joi.string().allow(null, ''),
     platforms: Joi.array().items(Joi.object({
       name: Joi.string(),
       slug: Joi.string(),
