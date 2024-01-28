@@ -2,6 +2,51 @@ const auth = require('../middleware/auth');
 const { Properties, validate } = require('../models/properties');
 const express = require('express');
 const router = express.Router();
+// const s3UploadMiddleware = require('./middleware/s3UploadMiddleware');
+const multer = require('multer');
+const fs = require('fs');
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+
+// const s3 = new S3Client({
+//   credentials: {
+//     accessKey: accessKey,
+//     secretAccessKey: secretAccessKey,
+//   },
+//   region: bucketRegion
+// });
+// const myBucketName = BUCKET_NAME;
+// const myNewFileNameKey = 'file.jpg';
+// const myFilePath = './images/1.jpg';
+
+// function uploadFile(filePath, bucketName, newFileNameKey){
+//   const fileStream = fs.createReadStream(filePath);
+//   fileStream.on('error', (err) => {
+//     console.log('File Error', err);
+//   });
+
+//   const params = {
+//     Bucket: bucketName,
+//     Key: newFileNameKey,
+//     Body: fileStream,
+//     ContentEncoding: 'base64',
+//     ContentType: 'image/jpeg',
+//     ACL:'public-read'
+//   };
+
+//   s3.upload(params, (err, data) => {
+//     if (err) {
+//       console.log('Error: ', err);
+//     };
+//     if (data) {
+//       console.log('Success: ', data.Location);
+//     }
+//   })
+// }
+
+// uploadFile(myFilePath, myBucketName, myNewFileNameKey);
 
 router.get('/', async(req, res) => {
   // Parse query parameters for propertyTypes
@@ -80,14 +125,40 @@ router.get('/:id', async (req, res) => {
   res.status(200).send(property);
 });
 
-router.post('/', auth, async (req, res) => {
-  const { error, value } = validate(req.body);
-  if ( error ) return res.status(400).send(error.message);
+// router.post('/', async (req, res) => {
+//   const { error, value } = validate(req.body);
+//   console.log(error);
+//   if ( error ) return res.status(400).send(error.message);
   
-  let property = new Properties({ ...req.body });
+//   let property = new Properties({ ...req.body });
 
-  property = await property.save();
-  res.send(property);
+//   property = await property.save();
+//   res.send(property);
+// });
+
+router.post('/', upload.single('featuredImage'), async (req, res) => {
+  // Access the S3 client and PutObjectCommand
+  const { s3, s3PutObjectCommand, bucketName } = req;
+  // console.log("req.body ", req.body);
+  // console.log("req.file ", req.file.buffer);
+
+  const params = {
+    Bucket: bucketName,
+    Key: req.file.originalname,
+    Body: req.file.buffer,
+    ContentType: req.file.mimetype
+  }
+  // console.log(params);
+  const command = new s3PutObjectCommand(params);
+  await s3.send(command);
+  // const { error, value } = validate(req.body);
+  // console.log(error);
+  // if ( error ) return res.status(400).send(error.message);
+  
+  // let property = new Properties({ ...req.body });
+
+  // property = await property.save();
+  res.send({});
 });
 
 router.delete('/:id', auth, async(req, res) => {
