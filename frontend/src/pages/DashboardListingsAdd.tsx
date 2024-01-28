@@ -9,39 +9,38 @@ const DashboardListingsAdd = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   console.log(errors);
 
-  const onSubmit = (data: FieldValues) => {
-    const property = {
-      user: '12234567890',
-      name: data.name,
-      address: {
-        street_1: data.street_1,
-        street_2: data.street_2,
-        city: data.city,
-        state: data.state,
-        zip: data.zip,
-      },
-      description: data.description,
-      featured_image: data.featured_image[0]?.name,
-      // platforms: Joi.array().items(Joi.object({
-      //   name: Joi.string(),
-      //   slug: Joi.string(),
-      //   url: Joi.string().uri(),
-      // })).allow(null, ''),
-      bedrooms: data.bedrooms,
-      bathrooms: data.bathrooms,
-      // days_booked: Joi.number().integer().min(0).max(100).allow(null, ''),
-      propertyTypes: data.property_types
-    }
-    console.log(property);
-    return axios
-    .post('http://localhost:8080/api/properties', {...property})
-    .then((response) => {
+  const onSubmit = async (data: FieldValues) => {
+    const formData = new FormData();
+    
+    // Append non-file fields to FormData
+    formData.append('user', '12234567890');
+    formData.append('name', data.name);
+    formData.append('address[street_1]', data.street_1);
+    formData.append('address[street_2]', data.street_2);
+    formData.append('address[city]', data.city);
+    formData.append('address[state]', data.state);
+    formData.append('address[zip]', data.zip);
+    formData.append('description', data.description);
+    formData.append('bedrooms', data.bedrooms);
+    formData.append('bathrooms', data.bathrooms);
+    formData.append('propertyTypes', data.property_types);
+  
+    // Append the file to FormData
+    formData.append('featuredImage', data.featured_image[0]);
+  
+    try {
+      const response = await axios.post('http://localhost:8080/api/properties', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
       console.log('Response from the server:', response.data);
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error('Error while making the POST request:', error);
-    });
+    }
   };
+  
 
   return (
     <>
