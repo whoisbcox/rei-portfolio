@@ -14,6 +14,7 @@ const Properties = mongoose.model('Properties', new mongoose.Schema({
   },
   description: String,
   featured_image: String,
+  featured_image_url: String,
   platforms: [{
     id: Number,
     name: String,
@@ -43,6 +44,7 @@ function validateProperty(property) {
     description: Joi.string().min(3).required(),
     // featured_image: Joi.string().uri().allow(null, ''),
     featured_image: Joi.string().allow(null, ''),
+    featured_image_url: Joi.string().allow(null, ''),
     platforms: Joi.array().items(Joi.object({
       name: Joi.string(),
       slug: Joi.string(),

@@ -24,6 +24,7 @@ export interface Property {
       zip: string;
     };
     featured_image: string;
+    featured_image_url: string;
     platforms: Platform[];
     days_booked: number;
     bedrooms: number;

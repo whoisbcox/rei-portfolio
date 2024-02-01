@@ -6,9 +6,7 @@ import axios from 'axios';
 
 const DashboardListingsAdd = () => {
   const { data: propertyTypes } = usePropertyTypes();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  console.log(errors);
-
+  const { register, handleSubmit } = useForm();
   const onSubmit = async (data: FieldValues) => {
     const formData = new FormData();
     
@@ -26,7 +24,7 @@ const DashboardListingsAdd = () => {
     formData.append('propertyTypes', data.property_types);
   
     // Append the file to FormData
-    formData.append('featuredImage', data.featured_image[0]);
+    formData.append('featured_image', data.featured_image[0]);
   
     try {
       const response = await axios.post('http://localhost:8080/api/properties', formData, {

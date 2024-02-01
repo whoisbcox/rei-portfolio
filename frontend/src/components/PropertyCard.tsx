@@ -9,12 +9,13 @@ interface Props {
 }
 
 const PropertyCard = ({ property }: Props) => {
+  console.log(property);
   return (
     <Box paddingBottom={6}>
         <Link to={`/properties/${property._id}`} >
           <AspectRatio maxW='100%' ratio={4 / 3}>
             <Image
-              src={property.featured_image}
+              src={property.featured_image_url}
               width='100%'
               objectFit='cover'
               borderRadius={5}
