@@ -9,7 +9,6 @@ interface Props {
 }
 
 const PropertyCard = ({ property }: Props) => {
-  console.log(property);
   return (
     <Box paddingBottom={6}>
         <Link to={`/properties/${property._id}`} >

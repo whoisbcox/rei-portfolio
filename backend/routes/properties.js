@@ -80,15 +80,19 @@ router.get('/', async(req, res) => {
   
   const { s3, s3GetObjectCommand, bucketName } = req;
   for(const filteredResult of filteredResults) {
-    const params = {
-      Bucket: bucketName,
-      Key: filteredResult.featured_image,
-    };
+    filteredResult.featured_image_url = '';
     
-    const command = await new s3GetObjectCommand(params);
-    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-    
-    filteredResult.featured_image_url = url;
+    if (filteredResult.featured_image) {
+      const params = {
+        Bucket: bucketName,
+        Key: filteredResult.featured_image,
+      };
+      
+      const command = await new s3GetObjectCommand(params);
+      const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+      
+      filteredResult.featured_image_url = url;
+    }
   }
   
   res.status(200).send({ ...filteredResults });
@@ -97,14 +101,18 @@ router.get('/', async(req, res) => {
 router.get('/:id', async (req, res) => {
   const property = await Properties.findById(req.params.id);
   if (!property) return res.status(400).send('The property with the given ID was not found');
-  const { s3, s3GetObjectCommand, bucketName } = req;
-  const params = {
-    Bucket: bucketName,
-    Key: property.featured_image,
-  };
-  const command = await new s3GetObjectCommand(params);
-  const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-  property.featured_image_url = url;
+  
+  property.featured_image_url = '';
+  if (property.featured_image) {
+    const { s3, s3GetObjectCommand, bucketName } = req;
+    const params = {
+      Bucket: bucketName,
+      Key: property.featured_image,
+    };
+    const command = await new s3GetObjectCommand(params);
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    property.featured_image_url = url;
+  }
   
   res.status(200).send(property);
 });
@@ -130,6 +138,35 @@ router.post('/', upload.single('featured_image'), async (req, res) => {
   let property = new Properties({ ...req.body, featured_image: fileKey });
 
   property = await property.save();
+  res.send(property);
+});
+
+router.put('/:id', upload.single('featured_image'), async (req, res) => {
+  const { error, value } = validate(req.body);
+  if ( error ) return res.status(400).send(error.message);
+  let newFeatImage = req.body.featured_image_url ? {} : { featured_image: 'https://placehold.co/200' };
+
+  if (req.file) {
+    const { s3, s3PutObjectCommand, bucketName } = req;
+    const hash = crypto.createHash('sha256');
+    hash.update(req.file.buffer);
+    const fileKey = `${hash.digest('hex')}_${req.file.originalname}`;
+  
+    const params = {
+      Bucket: bucketName,
+      Key: fileKey,
+      Body: req.file.buffer,
+      ContentType: req.file.mimetype,
+    }
+    const command = new s3PutObjectCommand(params);
+    await s3.send(command);
+    newFeatImage.featured_image = fileKey;
+  }
+  
+  const property = await Properties.findByIdAndUpdate(req.params.id, { ...req.body, ...newFeatImage}, {new: true});
+  if (!property) return res.status(404).send('The property with the given ID was not found');
+  console.log(property);
+
   res.send(property);
 });
 
