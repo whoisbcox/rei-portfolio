@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import APIClient from '../services/api-client';
 import usePropertyQueryStore from '../store';
 
@@ -33,13 +33,15 @@ export interface Property {
 }
 
 const useProperties = () => {
+  const queryClient = useQueryClient();
+  
   const propertyQuery = usePropertyQueryStore(s => s.propertyQuery);
   const minBedrooms = propertyQuery.filterSettings?.min_bedrooms !== '' ? propertyQuery.filterSettings?.min_bedrooms : null;
   const maxBedrooms = propertyQuery.filterSettings?.max_bedrooms !== '' ? propertyQuery.filterSettings?.max_bedrooms : null;
   const minBathrooms = propertyQuery.filterSettings?.min_bathrooms !== '' ? propertyQuery.filterSettings?.min_bathrooms : null;
   const maxBathrooms = propertyQuery.filterSettings?.max_bathrooms !== '' ? propertyQuery.filterSettings?.max_bathrooms : null;
-  
-  return  useQuery({
+
+  const { isLoading, error, data } = useQuery({
     queryKey: ['properties', propertyQuery],
     queryFn: () =>
       apiClient
@@ -55,5 +57,17 @@ const useProperties = () => {
           },
         }),
   })
+  
+  const deleteProperty = async (id: string) => {
+    try {
+      await apiClient.delete(id);
+      // Invalidate the query for 'properties' after successful deletion
+      queryClient.invalidateQueries(['properties']);
+    } catch (error) {
+      console.error('Error deleting property:', error);
+    }
+  };
+  
+  return { isLoading, error, data, deleteProperty };
 }
 export default useProperties;

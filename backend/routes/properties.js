@@ -165,12 +165,11 @@ router.put('/:id', upload.single('featured_image'), async (req, res) => {
   
   const property = await Properties.findByIdAndUpdate(req.params.id, { ...req.body, ...newFeatImage}, {new: true});
   if (!property) return res.status(404).send('The property with the given ID was not found');
-  console.log(property);
 
   res.send(property);
 });
 
-router.delete('/:id', auth, async(req, res) => {
+router.delete('/:id', async(req, res) => {
   const property = await Properties.findByIdAndRemove(req.params.id); 
   if (!property) return res.status(400).send('The property with the given ID was not found');
 
