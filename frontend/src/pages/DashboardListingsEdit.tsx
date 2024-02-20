@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import useProperty from '../hooks/useProperty';
 import { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from "react-router-dom";
 
 const DashboardListingsEdit = () => {
   const { id } = useParams();
@@ -13,6 +15,9 @@ const DashboardListingsEdit = () => {
   const { data: propertyTypes } = usePropertyTypes();
   const { register, handleSubmit, setValue } = useForm();
   const [featImage, setFeatImage] = useState('');
+  const navigate = useNavigate();
+  const jwt = localStorage.getItem('jwt');
+  const decodedToken = jwt && jwtDecode(jwt);
 
   useEffect(() => {
     if (!property) return;
@@ -39,7 +44,7 @@ const DashboardListingsEdit = () => {
     const formData = new FormData();
     
     // Append non-file fields to FormData
-    formData.append('user', '12234567890');
+    formData.append('user', decodedToken?._id);
     formData.append('name', data.name);
     formData.append('address[street_1]', data.street_1);
     formData.append('address[street_2]', data.street_2);
@@ -60,11 +65,12 @@ const DashboardListingsEdit = () => {
     try {
       const response = await axios.put(`http://localhost:8080/api/properties/${id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'x-auth-token': jwt
         },
       });
   
-      window.location.reload();
+      navigate(`/dashboard/listings/${id}`);
     } catch (error) {
       console.error('Error while making the PUT request:', error);
     }

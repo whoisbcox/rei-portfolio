@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./components/AuthProvider";
 import Layout from "./pages/Layout";
 import HomePage from "./pages/HomePage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard />,
+    element: (
+      <AuthProvider>
+        <Dashboard />
+      </AuthProvider>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { path: '/dashboard/listings', element: <DashboardListings />},

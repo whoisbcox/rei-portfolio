@@ -11,6 +11,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.get('/', async(req, res) => {
+  const user = req.query.user ? {user: req.query.user} : undefined;
   // Parse query parameters for propertyTypes
   const selectedPropertyTypes = req.query.propertyTypes;
   
@@ -27,7 +28,7 @@ router.get('/', async(req, res) => {
   const max_bathrooms = req.query.max_bathrooms ? parseInt(req.query.max_bathrooms) : undefined;
 
   // Start with all properties
-  let filteredResults = await Properties.find().populate('propertyTypes');
+  let filteredResults = await Properties.find(user).populate('propertyTypes');
 
   // Filter based on selected property types, if provided
   if (selectedPropertyTypes) {
@@ -117,7 +118,7 @@ router.get('/:id', async (req, res) => {
   res.status(200).send(property);
 });
 
-router.post('/', upload.single('featured_image'), async (req, res) => {
+router.post('/', auth, upload.single('featured_image'), async (req, res) => {
   const { error, value } = validate(req.body);
   if ( error ) return res.status(400).send(error.message);
   
@@ -169,7 +170,7 @@ router.put('/:id', upload.single('featured_image'), async (req, res) => {
   res.send(property);
 });
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
   const property = await Properties.findByIdAndRemove(req.params.id); 
   if (!property) return res.status(400).send('The property with the given ID was not found');
 

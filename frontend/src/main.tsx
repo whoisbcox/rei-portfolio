@@ -14,10 +14,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode}/>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools buttonPosition='bottom-left' />
-      </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools buttonPosition='bottom-left' />
+        </QueryClientProvider>
     </ChakraProvider>
   </React.StrictMode>,
 )

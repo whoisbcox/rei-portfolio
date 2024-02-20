@@ -2,6 +2,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import DashboardNav from '../components/DashboardNav'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
+import { useAuth } from '../hooks/useAuth'
 
 const Dashboard = () => {
   return (
