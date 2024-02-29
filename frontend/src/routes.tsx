@@ -12,13 +12,15 @@ import DashboardProfile from "./pages/DashboardProfile";
 import DashboardUsers from "./pages/DashboardUsers";
 import DashboardListingsAdd from "./pages/DashboardListingsAdd";
 import DashboardListingsEdit from "./pages/DashboardListingsEdit";
+import { AuthMiddleware } from "./middleware/AuthMiddleware";
+
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
       <AuthProvider>
-        <Layout />
+        <AuthMiddleware element={<Layout />} />
       </AuthProvider>
     ),
     errorElement: <ErrorPage />,
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: (
       <AuthProvider>
-        <Dashboard />
+        <AuthMiddleware element={<Dashboard />} />
       </AuthProvider>
     ),
     errorElement: <ErrorPage />,

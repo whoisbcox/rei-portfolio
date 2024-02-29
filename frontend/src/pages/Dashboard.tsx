@@ -1,25 +1,9 @@
-import { Grid, GridItem, Spinner } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
 import DashboardNav from '../components/DashboardNav'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
-import { useEffect, useState } from 'react'
-import { useAuth } from '../hooks/useAuth'
 
-const Dashboard = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const { isAuthenticated } = useAuth();
-  
-  useEffect(() => {
-    console.log(isAuthenticated);
-    setTimeout(() => {
-      if (isAuthenticated) {
-        setIsVisible(true);
-      }
-    }, 300);
-  }, [isAuthenticated]);
-
-  if (!isVisible) return <Spinner />;
-  
+const Dashboard = () => {  
   return (
     <Grid
       templateAreas={{
