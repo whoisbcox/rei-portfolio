@@ -22,13 +22,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('jwt');
-      if (!token) return;
+      if (!token) return navigate('/login'); 
       try {
         const userId: string = await verifyToken(token);
         setAuthState({ isAuthenticated: true, userId });
       } catch (error) {
         console.error('Error verifying token:', error);
-        logout();
         navigate('/login');
       }
     };
@@ -44,6 +43,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('jwt');
     setAuthState({ isAuthenticated: false, userId: null });
+    navigate('/login');
   };
 
   const authContextValue: AuthContextType = {

@@ -16,7 +16,11 @@ import DashboardListingsEdit from "./pages/DashboardListingsEdit";
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <AuthProvider>
+        <Layout />
+      </AuthProvider>
+    ),
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
