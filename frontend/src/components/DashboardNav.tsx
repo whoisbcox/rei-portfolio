@@ -11,6 +11,9 @@ const DashboardNav = () => {
         <Link to="/dashboard/listings">Manage Listings</Link>
       </ListItem>
       <ListItem>
+        <Link to="/dashboard/submissions">View Submissions</Link>
+      </ListItem>
+      <ListItem>
         <Link to="/dashboard/profile">Edit Profile</Link>
       </ListItem>
       <ListItem>

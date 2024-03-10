@@ -5,6 +5,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 const properties = require('./routes/properties');
 const propertyTypes = require('./routes/propertyTypes');
+const formSubmissions = require('./routes/formSubmissions');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const express = require('express');
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use('/api/properties', s3Middleware);
 app.use('/api/properties', properties);
 app.use('/api/property-types', propertyTypes);
+app.use('/api/submit-form', formSubmissions);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 

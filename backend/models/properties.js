@@ -2,7 +2,10 @@ const Joi = require('joi');
 const mongoose = require('mongoose');
 
 const Properties = mongoose.model('Properties', new mongoose.Schema({
-  user: String,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   name: { type: String, required: true, minlength: 5, maxlength: 255 },
   slug: String,
   address: {
@@ -42,7 +45,6 @@ function validateProperty(property) {
       zip: Joi.string().regex(/^\d{5}(?:-\d{4})?$/),
     }),
     description: Joi.string().min(3).required(),
-    // featured_image: Joi.string().uri().allow(null, ''),
     featured_image: Joi.string().allow(null, ''),
     featured_image_url: Joi.string().allow(null, ''),
     platforms: Joi.array().items(Joi.object({

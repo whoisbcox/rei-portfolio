@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 
 const PropertyTypes = mongoose.model('PropertyTypes', new mongoose.Schema({
   icon: Number,
-  name: String
+  name: String,
+  name_singular: String
 }));
 
 function validatePropertyType(propertyType) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(255).required(),
+    name_singular: Joi.string().min(5).max(255),
     icon: Joi.number().required()
   });
 

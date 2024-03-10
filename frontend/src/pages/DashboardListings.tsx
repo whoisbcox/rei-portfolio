@@ -3,13 +3,11 @@ import { Link } from "react-router-dom"
 import useProperties, { Property } from "../hooks/useProperties";
 import { FaEye, FaPencil, FaTrashCan } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
+import useUser from "../hooks/useUser";
 
 
 const DashboardListings = () => {
-  const jwt = localStorage.getItem('jwt');
-  const decoded = jwtDecode(jwt);
-  const userId = decoded ? decoded._id : null;
+  const { userId } = useUser();
   const [data, setData] = useState<Property[]>([]);
   const { data: fetchedData, error, deleteProperty } = useProperties(userId);
   const { isOpen, onOpen, onClose } = useDisclosure();

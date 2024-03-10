@@ -13,6 +13,7 @@ import DashboardUsers from "./pages/DashboardUsers";
 import DashboardListingsAdd from "./pages/DashboardListingsAdd";
 import DashboardListingsEdit from "./pages/DashboardListingsEdit";
 import { AuthMiddleware } from "./middleware/AuthMiddleware";
+import DashboardSubmissions from "./pages/DashboardSubmissions";
 
 
 const router = createBrowserRouter([
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
       { path: '/dashboard/listings', element: <DashboardListings />},
       { path: '/dashboard/listings/new', element: <DashboardListingsAdd />},
       { path: '/dashboard/listings/:id', element: <DashboardListingsEdit />},
+      { path: '/dashboard/submissions', element: <DashboardSubmissions />},
       { path: '/dashboard/profile', element: <DashboardProfile />},
       { path: '/dashboard/users', element: <DashboardUsers />},
     ]
