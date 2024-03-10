@@ -19,14 +19,14 @@ router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
   if ( error ) return res.status(400).send(error.message);
 
-  let propertyType = new PropertyTypes({ icon: req.body.icon, name: req.body.name });
+  let propertyType = new PropertyTypes({ icon: req.body.icon, name: req.body.name, name_singular: req.body.name_singular });
 
   propertyType = await propertyType.save();
   res.send(propertyType);
 });
 
 router.put('/:id', auth, async (req, res) => {
-  const propertyType = await PropertyTypes.findByIdAndUpdate(req.params.id, { name: req.body.name }, { new: true });
+  const propertyType = await PropertyTypes.findByIdAndUpdate(req.params.id, { name: req.body.name, name_singular: req.body.name_singular }, { new: true });
 
   if (!propertyType) return res.status(404).send('This property type with the given ID was not found');
 

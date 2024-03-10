@@ -12,6 +12,7 @@ const upload = multer({ storage: storage });
 
 router.get('/', async(req, res) => {
   const user = req.query.user ? {user: req.query.user} : undefined;
+
   // Parse query parameters for propertyTypes
   const selectedPropertyTypes = req.query.propertyTypes;
   
@@ -100,7 +101,7 @@ router.get('/', async(req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const property = await Properties.findById(req.params.id);
+  const property = await Properties.findById(req.params.id).populate('propertyTypes');
   if (!property) return res.status(400).send('The property with the given ID was not found');
   
   property.featured_image_url = '';

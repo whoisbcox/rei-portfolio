@@ -1,8 +1,16 @@
 import { InvalidateQueryFilters, QueryKey, useQuery, useQueryClient } from '@tanstack/react-query';
 import APIClient from '../services/api-client';
 import usePropertyQueryStore from '../store';
+import { PropertyType } from './usePropertyTypes';
 
 const apiClient = new APIClient<Property>('/api/properties');
+
+export interface User {
+  _id: number;
+  name: string;
+  email: string;
+  password: string;
+}
 
 export interface Platform {
   _id: number;
@@ -13,6 +21,7 @@ export interface Platform {
 
 export interface Property {
     _id: string;
+    user: User;
     name: string;
     slug: string;
     description: string;
@@ -29,7 +38,7 @@ export interface Property {
     days_booked: number;
     bedrooms: number;
     bathrooms: number;
-    propertyTypes: string;
+    propertyTypes: PropertyType;
 }
 
 const useProperties = (userId?: string | null) => {

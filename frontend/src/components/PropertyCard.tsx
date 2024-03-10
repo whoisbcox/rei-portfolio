@@ -3,6 +3,7 @@ import { AspectRatio, Box, HStack, Heading, Image, Text } from '@chakra-ui/react
 import PlatformIconList from './PlatformIconList'
 import DaysBooked from './DaysBooked'
 import { Link } from 'react-router-dom'
+import { toTitleCase } from '../utils'
 
 interface Props {
   property: Property
@@ -30,7 +31,7 @@ const PropertyCard = ({ property }: Props) => {
         transition: 'color .25s ease'
       }}>
         <Link to={`/properties/${property._id}`} >
-          {property.name}
+          {toTitleCase(property.address.city)}, {property.address.state.toUpperCase()}
         </Link>
       </Heading>
       <HStack>

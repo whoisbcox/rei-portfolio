@@ -8,6 +8,7 @@ export interface PropertyType {
   _id: string;
   icon: number;
   name: string;
+  name_singular: string;
 }
 
 const usePropertyTypes = () => useQuery({
