@@ -46,7 +46,9 @@ const DashboardListingsAdd = () => {
 
   return (
     <>
-      <Heading >Add New Listing</Heading>
+      <Box mb={8}>
+        <Heading >Add New Listing</Heading>
+      </Box>
       <Box w="600px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormLabel htmlFor="name" mt={4}>Name</FormLabel>

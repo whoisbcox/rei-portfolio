@@ -34,7 +34,7 @@ const PropertyTypes = () => {
             fontSize='xs'
             as='button'
             border='1px'
-            borderColor={propertyType._id == propertyTypeId ? 'green.400': 'gray.200'}
+            borderColor='green.400'
             borderRadius={5}
             paddingY={3}
             paddingX={4}

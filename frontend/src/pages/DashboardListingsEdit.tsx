@@ -83,7 +83,9 @@ const DashboardListingsEdit = () => {
 
   return (
     <>
-      <Heading>Edit Listing</Heading>
+      <Box mb={8}>
+        <Heading>Edit Listing</Heading>
+      </Box>
       <Box w="600px">
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormLabel htmlFor="name" mt={4}>Name</FormLabel>

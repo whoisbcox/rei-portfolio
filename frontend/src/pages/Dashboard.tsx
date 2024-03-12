@@ -18,10 +18,10 @@ const Dashboard = () => {
       <GridItem area="nav">
         <NavBar />
       </GridItem>
-      <GridItem area="aside">
+      <GridItem area="aside" mx='auto' paddingY={8}>
         <DashboardNav />
       </GridItem>
-      <GridItem area="main">
+      <GridItem area="main" paddingY={8} paddingX={6}>
         <Outlet />
       </GridItem>
     </Grid>
