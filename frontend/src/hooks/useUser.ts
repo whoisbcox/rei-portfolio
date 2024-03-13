@@ -1,11 +1,17 @@
-import { jwtDecode } from "jwt-decode";
+import { useQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-client";
+import { User } from "./useUsers";
 
-const useUser = () => {
-  const jwt = localStorage.getItem('jwt');
-  if (null == jwt) return { user: null };
-  const decoded = jwtDecode(jwt);
-  const userId = decoded ? decoded._id : undefined;
-  return { userId };
-}
+const apiClient = new APIClient<User>('/api/users/me');
+const jwt = localStorage.getItem('jwt');
 
-export default useUser
+const useUser = (id: number | string) => useQuery({
+  queryKey: ['user', id],
+  queryFn: () => apiClient.getAll({
+    headers: {
+      'x-auth-token': jwt
+    }
+  })
+});
+
+export default useUser;

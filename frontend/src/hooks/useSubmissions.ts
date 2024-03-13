@@ -16,8 +16,7 @@ export interface Submission {
 
 const useSubmissions = (userId?: string | null) => useQuery({
   queryKey: ['submissions'],
-  queryFn: () => apiClient.getAll({ params: { user: userId } }),
-  staleTime: ms('24h')
+  queryFn: () => apiClient.getAll({ params: { user: userId } })
 })
 
 export default useSubmissions;

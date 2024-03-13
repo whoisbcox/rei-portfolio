@@ -23,7 +23,11 @@ const userSchema =  new mongoose.Schema({
     minlength: 2,
     maxlength: 1024
   },
-  isAdmin: Boolean
+  role: {
+    type: String,
+    minlength: 5,
+    maxlength: 50
+  }
 });
 
 userSchema.methods.generateAuthToken = function() {

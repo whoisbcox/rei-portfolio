@@ -2,15 +2,9 @@ import { InvalidateQueryFilters, QueryKey, useQuery, useQueryClient } from '@tan
 import APIClient from '../services/api-client';
 import usePropertyQueryStore from '../store';
 import { PropertyType } from './usePropertyTypes';
+import { User } from './useUsers';
 
 const apiClient = new APIClient<Property>('/api/properties');
-
-export interface User {
-  _id: number;
-  name: string;
-  email: string;
-  password: string;
-}
 
 export interface Platform {
   _id: number;

@@ -3,11 +3,11 @@ import { Link } from "react-router-dom"
 import useProperties, { Property } from "../hooks/useProperties";
 import { FaEye, FaPencil, FaTrashCan } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import useUser from "../hooks/useUser";
+import { useAuth } from "../hooks/useAuth";
 
 
 const DashboardListings = () => {
-  const { userId } = useUser();
+  const { userId } = useAuth();
   const [data, setData] = useState<Property[]>([]);
   const { data: fetchedData, error, deleteProperty } = useProperties(userId);
   const { isOpen, onOpen, onClose } = useDisclosure();
