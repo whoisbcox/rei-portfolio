@@ -1,8 +1,8 @@
-import { InvalidateQueryFilters, QueryKey, useQuery, useQueryClient } from '@tanstack/react-query';
-import APIClient from '../services/api-client';
-import usePropertyQueryStore from '../store';
-import { PropertyType } from './usePropertyTypes';
-import { User } from './useUsers';
+import { InvalidateQueryFilters, QueryKey, useQuery, useQueryClient } from '@tanstack/react-query'
+import APIClient from '../services/api-client'
+import usePropertyQueryStore from '../store'
+import { PropertyType } from './usePropertyTypes'
+import { User } from './useUsers'
 
 const apiClient = new APIClient<Property>('/api/properties');
 

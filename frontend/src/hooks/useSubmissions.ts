@@ -1,7 +1,6 @@
-import APIClient from '../services/api-client';
-import { useQuery } from '@tanstack/react-query';
-import ms from 'ms';
-import { Property } from './useProperties';
+import APIClient from '../services/api-client'
+import { useQuery } from '@tanstack/react-query'
+import { Property } from './useProperties'
 
 const apiClient = new APIClient<Submission[]>('/api/submit-form');
 
@@ -19,4 +18,4 @@ const useSubmissions = (userId?: string | null) => useQuery({
   queryFn: () => apiClient.getAll({ params: { user: userId } })
 })
 
-export default useSubmissions;
+export default useSubmissions

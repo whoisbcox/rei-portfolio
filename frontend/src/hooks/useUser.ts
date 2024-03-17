@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
-import { User } from "./useUsers";
+import { useQuery } from '@tanstack/react-query'
+import APIClient from '../services/api-client'
+import { User } from './useUsers'
 
 const apiClient = new APIClient<User>('/api/users/me');
 
@@ -13,4 +13,4 @@ const useUsers = (id?: string | null, token?: string | null) => useQuery({
   })
 });
 
-export default useUsers;
+export default useUsers

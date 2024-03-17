@@ -1,7 +1,7 @@
 import { Input, InputGroup, InputLeftElement, Text } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { BsSearch } from 'react-icons/bs'
-import usePropertyQueryStore from '../store';
+import usePropertyQueryStore from '../store'
 
 const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
@@ -14,7 +14,7 @@ const SearchInput = () => {
       <Text>Search</Text>
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />
-        <Input ref={ref} borderRadius={5} placeholder='Search properties...' />
+        <Input ref={ref} borderRadius={5} placeholder="Search properties..." />
       </InputGroup>
     </form>
   )

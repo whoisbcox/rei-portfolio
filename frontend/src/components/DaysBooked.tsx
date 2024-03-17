@@ -11,8 +11,8 @@ const DaysBooked = ({ days_booked }: Props) => {
   return (
     <>
     {
-      fullyVacant ? <Badge colorScheme='green'>Book Now</Badge>:
-      fullyBooked ? <Badge colorScheme='red'>Fully Booked</Badge>
+      fullyVacant ? <Badge colorScheme="green">Book Now</Badge>:
+      fullyBooked ? <Badge colorScheme="red">Fully Booked</Badge>
       : <Badge colorScheme={color}>{days_booked}% booked</Badge>
     }
     </>

@@ -1,4 +1,4 @@
-import usePropertyTypes from "./usePropertyTypes";
+import usePropertyTypes from './usePropertyTypes'
 
 const usePropertyType = (id?: number) => {
   const { data: propertyTypes } = usePropertyTypes();

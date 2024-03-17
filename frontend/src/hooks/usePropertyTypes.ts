@@ -1,5 +1,5 @@
-import APIClient from '../services/api-client';
-import { useQuery } from '@tanstack/react-query';
+import APIClient from '../services/api-client'
+import { useQuery } from '@tanstack/react-query'
 
 const apiClient = new APIClient<PropertyType[]>('/api/property-types');
 
@@ -15,4 +15,4 @@ const usePropertyTypes = () => useQuery({
   queryFn: apiClient.getAll,
 })
 
-export default usePropertyTypes;
+export default usePropertyTypes

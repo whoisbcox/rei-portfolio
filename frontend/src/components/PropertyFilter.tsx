@@ -1,7 +1,7 @@
 import { Box, HStack, Select, Text } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
-import useMinMaxSelect from '../hooks/useMinMaxSelect';
-import usePropertyQueryStore from '../store';
+import useMinMaxSelect from '../hooks/useMinMaxSelect'
+import usePropertyQueryStore from '../store'
 
 export interface FilterSettings {
   min_bedrooms: string,
@@ -75,10 +75,10 @@ const PropertyFilter = () => {
         <Text>Bedrooms</Text>
         <HStack>
           <Select
-            placeholder='No min'
+            placeholder="No min"
             icon={<BsChevronDown />}
-            id='min_bedrooms'
-            name='min_bedrooms'
+            id="min_bedrooms"
+            name="min_bedrooms"
             value={minCount}
             onChange={createChangeHandler('min', 'bedrooms', handleMinBedroomsChange)}
           >
@@ -89,10 +89,10 @@ const PropertyFilter = () => {
             ))}
           </Select>
           <Select
-            placeholder='No max'
+            placeholder="No max"
             icon={<BsChevronDown />}
-            id='max_bedrooms'
-            name='max_bedrooms'
+            id="max_bedrooms"
+            name="max_bedrooms"
             value={maxCount}
             onChange={createChangeHandler('max', 'bedrooms', handleMaxBedroomsChange)}
           >
@@ -108,10 +108,10 @@ const PropertyFilter = () => {
         <Text>Bathrooms</Text>
         <HStack>
           <Select
-            placeholder='No min'
+            placeholder="No min"
             icon={<BsChevronDown />}
-            id='min_bathrooms'
-            name='min_bathrooms'
+            id="min_bathrooms"
+            name="min_bathrooms"
             value={minBath}
             onChange={createChangeHandler('min', 'bathrooms', handleMinBathroomsChange)}
           >
@@ -122,10 +122,10 @@ const PropertyFilter = () => {
             ))}
           </Select>
           <Select
-            placeholder='No max'
+            placeholder="No max"
             icon={<BsChevronDown />}
-            id='max_bathrooms'
-            name='max_bathrooms'
+            id="max_bathrooms"
+            name="max_bathrooms"
             value={maxBath}
             onChange={createChangeHandler('max', 'bathrooms', handleMaxBathroomsChange)}
           >

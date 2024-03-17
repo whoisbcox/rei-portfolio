@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { verifyToken } from '../services/verifyToken'; // Assuming you have an API function to verify tokens
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { createContext, useEffect, useState } from 'react'
+import { verifyToken } from '../services/verifyToken'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const isDashboardRoute = (pathname: string) => {
-  const dashboardLayouts = ["/dashboard"];
+  const dashboardLayouts = ['/dashboard'];
   return dashboardLayouts.some(layout => pathname.startsWith(layout));
 };
 

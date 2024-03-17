@@ -1,11 +1,11 @@
-import { Box, Flex, Heading, Icon, Spinner, Stack, Text } from "@chakra-ui/react";
-import usePropertyTypes, { PropertyType } from "../hooks/usePropertyTypes"
-import { IconType } from "react-icons";
-import { SiHomeassistantcommunitystore } from "react-icons/si"
-import { FaCampground, FaHome, FaRegBuilding, FaStethoscope, FaUmbrellaBeach } from "react-icons/fa"
-import { FaSignHanging } from "react-icons/fa6"
-import { MdApartment } from "react-icons/md"
-import usePropertyQueryStore from "../store";
+import { Box, Flex, Heading, Icon, Spinner, Stack, Text } from '@chakra-ui/react'
+import usePropertyTypes, { PropertyType } from '../hooks/usePropertyTypes'
+import { IconType } from 'react-icons'
+import { SiHomeassistantcommunitystore } from 'react-icons/si'
+import { FaCampground, FaHome, FaRegBuilding, FaStethoscope, FaUmbrellaBeach } from 'react-icons/fa'
+import { FaSignHanging } from 'react-icons/fa6'
+import { MdApartment } from 'react-icons/md'
+import usePropertyQueryStore from '../store'
 
 const PropertyTypes = () => {
   const { data, isLoading, error } = usePropertyTypes();
@@ -26,15 +26,15 @@ const PropertyTypes = () => {
   if (isLoading) return <Spinner />;
   return (
     <>
-      <Heading fontSize='2xl' marginY={2}>Property Types</Heading>
+      <Heading fontSize="2xl" marginY={2}>Property Types</Heading>
       <Flex paddingBottom={2} columnGap={3}>
         {data?.map((propertyType: PropertyType) => (
           <Box
             key={propertyType._id}
-            fontSize='xs'
-            as='button'
-            border='1px'
-            borderColor='green.400'
+            fontSize="xs"
+            as="button"
+            border="1px"
+            borderColor="green.400"
             borderRadius={5}
             paddingY={3}
             paddingX={4}
@@ -49,8 +49,8 @@ const PropertyTypes = () => {
             onClick={() => setPropertyTypeId('All Listings' !== propertyType.name ? propertyType._id : undefined)}
           >
             <Stack>
-              <Icon display='block' marginX='auto' as={iconMap[propertyType.icon]} boxSize={5} color='gray.500' />
-              <Text display='block' width='100%'>{propertyType.name}</Text>
+              <Icon display="block" marginX="auto" as={iconMap[propertyType.icon]} boxSize={5} color="gray.500" />
+              <Text display="block" width="100%">{propertyType.name}</Text>
             </Stack>
           </Box>
         ))}

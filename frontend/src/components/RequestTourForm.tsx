@@ -1,7 +1,7 @@
 import { Box, Button, FormControl, Heading, Input, Text } from '@chakra-ui/react'
-import { FieldValues, useForm } from 'react-hook-form';
-import { formatDate } from '../utils';
-import axios from 'axios';
+import { FieldValues, useForm } from 'react-hook-form'
+import { formatDate } from '../utils'
+import axios from 'axios'
 
 
 const RequestTourForm = ({ propertyId }: Props) => {
@@ -20,7 +20,7 @@ const RequestTourForm = ({ propertyId }: Props) => {
 
       if (200 == response.status) {
         alert('Form submitted successfully!');
-        reset(); // Reset the form after successful submission
+        reset();
       } else {
         alert('Failed to submit form. Please try again later.');
       }
@@ -74,24 +74,24 @@ const RequestTourForm = ({ propertyId }: Props) => {
           <Input
             type="text"
             id="name"
-            placeholder='Full Name'
+            placeholder="Full Name"
             {...register('name', { required: true })}
             mt={6}
             />
           {errors.name && <span>Full Name is required</span>}
           <Input
-            type='email'
+            type="email"
             id="email"
             {...register('email', { required: true })}
-            placeholder='Email Address'
+            placeholder="Email Address"
             mt={6}
           />
           {errors.email && <span>Email is required</span>}
           <Button
-            type='submit'
-            variant='solid'
-            colorScheme='green'
-            w='100%'
+            type="submit"
+            variant="solid"
+            colorScheme="green"
+            w="100%"
             mt={6}
           >Request Showing</Button>
         </FormControl>

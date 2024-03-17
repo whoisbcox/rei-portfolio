@@ -1,6 +1,6 @@
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
-import usePropertyQueryStore from '../store';
+import usePropertyQueryStore from '../store'
 
 const SortSelector = () => {
   const sortOrders = [
@@ -17,7 +17,7 @@ const SortSelector = () => {
     <Box>
       <Text>Sort</Text>
       <Menu>
-        <MenuButton as={Button} rightIcon={<BsChevronDown />} variant='outline'>
+        <MenuButton as={Button} rightIcon={<BsChevronDown />} variant="outline">
           Order by: {currentSortOrder?.label || 'Relevance'}
         </MenuButton>
         <MenuList>

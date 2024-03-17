@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 // Custom hook to handle dynamic updating of minimum and maximum selectors
 function useMinMaxSelect(initialMinValue: string | number, initialMaxValue: string | number, options: number[]) {
