@@ -3,15 +3,14 @@ import APIClient from "../services/api-client";
 import { User } from "./useUsers";
 
 const apiClient = new APIClient<User>('/api/users/me');
-const jwt = localStorage.getItem('jwt');
 
-const useUser = (id: number | string) => useQuery({
+const useUsers = (id?: string | null, token?: string | null) => useQuery({
   queryKey: ['user', id],
   queryFn: () => apiClient.getAll({
     headers: {
-      'x-auth-token': jwt
+      'x-auth-token': token
     }
   })
 });
 
-export default useUser;
+export default useUsers;

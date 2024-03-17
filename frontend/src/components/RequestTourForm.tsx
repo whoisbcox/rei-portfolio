@@ -10,7 +10,7 @@ const RequestTourForm = ({ propertyId }: Props) => {
   
   const onSubmit = async (formData: FieldValues) => {
     formData.property = propertyId;
-    console.log(formData);
+
     try {
       const response = await axios.post('http://localhost:8080/api/submit-form', formData, {
         headers: {
@@ -24,8 +24,6 @@ const RequestTourForm = ({ propertyId }: Props) => {
       } else {
         alert('Failed to submit form. Please try again later.');
       }
-  
-      console.log('Response from the server:', response.data);
     } catch (error) {
       console.error('Error while making the POST request:', error);
     }

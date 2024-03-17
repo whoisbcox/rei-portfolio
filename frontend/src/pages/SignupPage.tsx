@@ -11,8 +11,7 @@ const SignupPage = () => {
   
   const onSubmit = async (data: FieldValues) => {    
     try {
-      const response = await axios.post('http://localhost:8080/api/users', data);
-      console.log('Response from the server:', response.data);
+      await axios.post('http://localhost:8080/api/users', data);
       setIsSuccessModalOpen(true);
       
       setTimeout(() => {

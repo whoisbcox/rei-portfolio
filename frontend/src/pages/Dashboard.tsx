@@ -3,7 +3,7 @@ import DashboardNav from '../components/DashboardNav'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 
-const Dashboard = () => {  
+const Dashboard = () => {
   return (
     <Grid
       templateAreas={{

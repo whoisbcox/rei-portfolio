@@ -3,12 +3,11 @@ import { FaPencil, FaTrashCan } from "react-icons/fa6"
 import { Link } from "react-router-dom"
 import useUsers, { User } from "../hooks/useUsers";
 import { useState, useEffect } from "react";
-// import { useAuth } from "../hooks/useAuth";
 
 const DashboardUsers = () => {
-  // const { userId } = useAuth();
+  const jwt = localStorage.getItem('jwt');
   const [data, setData] = useState<User[]>([]);
-  const { data: fetchedData, isLoading, error, deleteUser} = useUsers();
+  const { data: fetchedData, isLoading, error, deleteUser} = useUsers(jwt);
   const { isOpen, onOpen, onClose } = useDisclosure();
   
   useEffect(() => {
@@ -20,7 +19,6 @@ const DashboardUsers = () => {
 
   const handleDelete = async (id: number | string) => {
     const newData = data.filter(user => user._id !== id);
-    console.log(newData);
     setData(newData);
     deleteUser(id);
     onClose();

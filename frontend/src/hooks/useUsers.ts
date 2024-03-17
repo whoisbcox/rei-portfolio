@@ -2,7 +2,6 @@ import { InvalidateQueryFilters, useQuery, useQueryClient } from "@tanstack/reac
 import APIClient from "../services/api-client";
 
 const apiClient = new APIClient<User[]>('/api/users');
-const jwt = localStorage.getItem('jwt');
 
 export interface User {
   _id: number;
@@ -12,13 +11,13 @@ export interface User {
   role: string;
 }
 
-const useUsers = () => {
+const useUsers = (token: string |  null) => {
   const queryClient = useQueryClient();
   const { isLoading, error, data } = useQuery({
     queryKey: ['users'],
     queryFn: () => apiClient.getAll({
       headers: {
-        'x-auth-token': jwt
+        'x-auth-token': token
       }
     })
   });

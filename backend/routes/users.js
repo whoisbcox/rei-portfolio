@@ -16,6 +16,21 @@ router.get('/me', auth, async (req, res) => {
   res.send(user);
 });
 
+router.put('/me', auth, async (req, res) => {
+  const { password, ...otherFields } = req.body;
+  const updateObject = _.pickBy(otherFields, field => !_.isEmpty(field));
+  
+  if (password) {
+    const salt = await bcrypt.genSalt(10);
+    updateObject.password = await bcrypt.hash(password, salt);
+  }
+  
+  const user = await User.findByIdAndUpdate(req.user._id, {...updateObject}, {new: true});
+  const token = await user.generateAuthToken();
+  
+  res.send(token);
+});
+
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
   if ( error ) return res.status(400).send(error.message);
