@@ -1,9 +1,9 @@
 import { Heading, FormLabel, Input, Button, Select, Textarea, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Box } from '@chakra-ui/react'
 import states from '../data/states.json'
-import usePropertyTypes from '../hooks/usePropertyTypes';
-import { FieldValues, useForm } from 'react-hook-form';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
+import usePropertyTypes from '../hooks/usePropertyTypes'
+import { FieldValues, useForm } from 'react-hook-form'
+import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 const DashboardListingsAdd = () => {
   const { data: propertyTypes } = usePropertyTypes();

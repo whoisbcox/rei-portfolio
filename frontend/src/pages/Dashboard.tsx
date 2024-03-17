@@ -18,7 +18,7 @@ const Dashboard = () => {
       <GridItem area="nav">
         <NavBar />
       </GridItem>
-      <GridItem area="aside" mx='auto' paddingY={8}>
+      <GridItem area="aside" mx="auto" paddingY={8}>
         <DashboardNav />
       </GridItem>
       <GridItem area="main" paddingY={8} paddingX={6}>

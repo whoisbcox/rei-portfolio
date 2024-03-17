@@ -1,8 +1,8 @@
-import { Box, Button, FormLabel, Heading, Input, Spinner, Text } from "@chakra-ui/react"
-import useUser from "../hooks/useUser";
-import { FieldValues, useForm } from "react-hook-form";
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import { Box, Button, FormLabel, Heading, Input, Spinner, Text } from '@chakra-ui/react'
+import useUser from '../hooks/useUser'
+import { FieldValues, useForm } from 'react-hook-form'
+import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 
 const DashboardProfile = () => {
   const jwt = localStorage.getItem('jwt');

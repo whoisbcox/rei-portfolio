@@ -1,13 +1,13 @@
 import { Heading, FormLabel, Input, Button, Select, Textarea, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Box, Image, Spinner } from '@chakra-ui/react'
 import states from '../data/states.json'
-import usePropertyTypes from '../hooks/usePropertyTypes';
-import { FieldValues, useForm } from 'react-hook-form';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import useProperty from '../hooks/useProperty';
-import { useEffect, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from "react-router-dom";
+import usePropertyTypes from '../hooks/usePropertyTypes'
+import { FieldValues, useForm } from 'react-hook-form'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import useProperty from '../hooks/useProperty'
+import { useEffect, useState } from 'react'
+import { jwtDecode } from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
 
 const DashboardListingsEdit = () => {
   const { id } = useParams();

@@ -1,8 +1,8 @@
-import { Flex, Heading, Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure, Spinner } from "@chakra-ui/react"
-import { FaPencil, FaTrashCan } from "react-icons/fa6"
-import { Link } from "react-router-dom"
-import useUsers, { User } from "../hooks/useUsers";
-import { useState, useEffect } from "react";
+import { Flex, Heading, Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure, Spinner } from '@chakra-ui/react'
+import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
+import useUsers, { User } from '../hooks/useUsers'
+import { useState, useEffect } from 'react'
 
 const DashboardUsers = () => {
   const jwt = localStorage.getItem('jwt');
@@ -31,7 +31,7 @@ const DashboardUsers = () => {
       <Flex justify='space-between' mb={8}>
         <Heading>Manage Users</Heading>
         <Link to={'#'}>
-          <Button variant='outline' colorScheme='green'>Add User</Button>
+          <Button variant="outline" colorScheme="green">Add User</Button>
         </Link>
       </Flex>
       <TableContainer>
@@ -60,12 +60,12 @@ const DashboardUsers = () => {
                   <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                      <ModalHeader mt={4} textAlign={'center'}>Are you sure you want to delete?</ModalHeader>
+                      <ModalHeader mt={4} textAlign="center">Are you sure you want to delete?</ModalHeader>
                       <ModalCloseButton />
 
-                      <ModalFooter justifyContent={'center'}>
+                      <ModalFooter justifyContent="center">
                         <Button mr={3} onClick={onClose}>Cancel</Button>
-                        <Button colorScheme="red" variant='outline' onClick={() => handleDelete(user._id)}>Delete</Button>
+                        <Button colorScheme="red" variant="outline" onClick={() => handleDelete(user._id)}>Delete</Button>
                       </ModalFooter>
                     </ModalContent>
                   </Modal>

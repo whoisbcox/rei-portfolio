@@ -1,7 +1,7 @@
-import { Box, Button, Center, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
-import axios from "axios";
-import { FieldValues, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Center, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react'
+import axios from 'axios'
+import { FieldValues, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();

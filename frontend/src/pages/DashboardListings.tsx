@@ -1,9 +1,9 @@
-import { Button, Flex, Heading, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
-import useProperties, { Property } from "../hooks/useProperties";
-import { FaEye, FaPencil, FaTrashCan } from "react-icons/fa6";
-import { useEffect, useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { Button, Flex, Heading, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
+import useProperties, { Property } from '../hooks/useProperties'
+import { FaEye, FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { useEffect, useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 
 
 const DashboardListings = () => {
@@ -19,9 +19,9 @@ const DashboardListings = () => {
     }
   }, [fetchedData]);
   
-  if (error) return <Text padding='10px'>{error.message}</Text>;
+  if (error) return <Text padding="10px">{error.message}</Text>;
   
-  if (!data) return <Text padding='10px'>No matches found.</Text>;
+  if (!data) return <Text padding="10px">No matches found.</Text>;
 
   const handleDelete = async (id: string) => {
     const newData = data.filter(property => property._id !== id);
@@ -32,10 +32,10 @@ const DashboardListings = () => {
   
   return (
     <>
-      <Flex justify='space-between' mb={8}>
+      <Flex justify="space-between" mb={8}>
         <Heading>Manage Listings</Heading>
         <Link to={'/dashboard/listings/new'}>
-          <Button variant='outline' colorScheme='green'>Add New</Button>
+          <Button variant="outline" colorScheme="green">Add New</Button>
         </Link>
       </Flex>
       <TableContainer>
@@ -67,12 +67,12 @@ const DashboardListings = () => {
                   <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
                     <ModalContent>
-                      <ModalHeader mt={4} textAlign={'center'}>Are you sure you want to delete?</ModalHeader>
+                      <ModalHeader mt={4} textAlign="center">Are you sure you want to delete?</ModalHeader>
                       <ModalCloseButton />
 
-                      <ModalFooter justifyContent={'center'}>
+                      <ModalFooter justifyContent="center">
                         <Button mr={3} onClick={onClose}>Cancel</Button>
-                        <Button colorScheme="red" variant='outline' onClick={() => handleDelete(property._id)}>Delete</Button>
+                        <Button colorScheme="red" variant="outline" onClick={() => handleDelete(property._id)}>Delete</Button>
                       </ModalFooter>
                     </ModalContent>
                   </Modal>

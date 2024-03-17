@@ -1,8 +1,8 @@
-import { Box, Button, Heading, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Select, Spinner, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from "@chakra-ui/react";
-import useSubmissions, { Submission } from "../hooks/useSubmissions"
-import { FaEnvelope, FaTrashCan } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { Box, Button, Heading, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
+import useSubmissions, { Submission } from '../hooks/useSubmissions'
+import { FaEnvelope, FaTrashCan } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 
 const DashboardSubmissions = () => {
   const { userId } =  useAuth();

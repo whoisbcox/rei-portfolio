@@ -1,5 +1,5 @@
-import { create } from "zustand";
-import { FilterSettings } from "./components/PropertyFilter";
+import { create } from 'zustand'
+import { FilterSettings } from './components/PropertyFilter'
 
 interface PropertyQuery {
   propertyTypeId?: number | undefined;
@@ -31,4 +31,4 @@ const usePropertyQueryStore = create<PropertyQueryStore>(set => ({
   sortOrder: (sortOrder) => set(store => ({ propertyQuery: { ...store.propertyQuery, sortOrder }})),
 }));
 
-export default usePropertyQueryStore;
+export default usePropertyQueryStore

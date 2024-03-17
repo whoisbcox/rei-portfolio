@@ -22,4 +22,4 @@ const formatDate = (date: Date) => {
   return `${year}-${month}-${day}`;
 };
 
-export { formatDate, toTitleCase };
+export { formatDate, toTitleCase }

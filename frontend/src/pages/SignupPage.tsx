@@ -1,8 +1,8 @@
-import { Box, Button, Center, FormControl, FormLabel, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
-import axios from "axios";
-import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Box, Button, Center, FormControl, FormLabel, Heading, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react'
+import axios from 'axios'
+import { useState } from 'react'
+import { FieldValues, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 const SignupPage = () => {
   const {register, handleSubmit} = useForm();
@@ -47,7 +47,7 @@ const SignupPage = () => {
             User created successfully. Please log in.
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='green' variant='outline' onClick={() => navigate('/login')}>
+            <Button colorScheme="green" variant="outline" onClick={() => navigate('/login')}>
               Login
             </Button>
           </ModalFooter>

@@ -1,19 +1,19 @@
-import { createBrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./components/AuthProvider";
-import Layout from "./pages/Layout";
-import HomePage from "./pages/HomePage";
-import PropertyDetailPage from "./pages/PropertyDetailPage";
-import ErrorPage from "./pages/ErrorPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import Dashboard from "./pages/Dashboard";
-import DashboardListings from "./pages/DashboardListings";
-import DashboardProfile from "./pages/DashboardProfile";
-import DashboardUsers from "./pages/DashboardUsers";
-import DashboardListingsAdd from "./pages/DashboardListingsAdd";
-import DashboardListingsEdit from "./pages/DashboardListingsEdit";
-import { AuthMiddleware } from "./middleware/AuthMiddleware";
-import DashboardSubmissions from "./pages/DashboardSubmissions";
+import { createBrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './components/AuthProvider'
+import Layout from './pages/Layout'
+import HomePage from './pages/HomePage'
+import PropertyDetailPage from './pages/PropertyDetailPage'
+import ErrorPage from './pages/ErrorPage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
+import Dashboard from './pages/Dashboard'
+import DashboardListings from './pages/DashboardListings'
+import DashboardProfile from './pages/DashboardProfile'
+import DashboardUsers from './pages/DashboardUsers'
+import DashboardListingsAdd from './pages/DashboardListingsAdd'
+import DashboardListingsEdit from './pages/DashboardListingsEdit'
+import { AuthMiddleware } from './middleware/AuthMiddleware'
+import DashboardSubmissions from './pages/DashboardSubmissions'
 
 
 const router = createBrowserRouter([
