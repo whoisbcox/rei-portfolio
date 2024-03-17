@@ -38,10 +38,10 @@ const PropertyCard = ({ property }: Props) => {
         <Text>{property.bedrooms} Bed</Text>
         <Text>{property.bathrooms} Bath</Text>
       </HStack>
-      <HStack justifyContent="space-between">
+      {/* <HStack justifyContent="space-between">
         <PlatformIconList platforms={property.platforms}/>
         <DaysBooked days_booked={property.days_booked} />
-      </HStack>
+      </HStack> */}
     </Box>
   )
 }
