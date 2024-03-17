@@ -20,7 +20,7 @@ const DashboardUsers = () => {
   const handleDelete = async (id: number | string) => {
     const newData = data.filter(user => user._id !== id);
     setData(newData);
-    deleteUser(id);
+    deleteUser(id, jwt);
     onClose();
   };
 

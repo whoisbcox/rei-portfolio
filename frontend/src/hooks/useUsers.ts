@@ -1,5 +1,5 @@
-import { InvalidateQueryFilters, useQuery, useQueryClient } from "@tanstack/react-query";
-import APIClient from "../services/api-client";
+import { InvalidateQueryFilters, useQuery, useQueryClient } from '@tanstack/react-query'
+import APIClient from '../services/api-client'
 
 const apiClient = new APIClient<User[]>('/api/users');
 
@@ -22,11 +22,11 @@ const useUsers = (token: string |  null) => {
     })
   });
 
-  const deleteUser = (id: number | string) => {
+  const deleteUser = (id: number | string, token: string | null) => {
     try {
       apiClient.delete(id, {
         headers: {
-          'x-auth-token': jwt,
+          'x-auth-token': token,
           'x-user-role': 'admin'
         }
       });
