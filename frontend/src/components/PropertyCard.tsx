@@ -31,7 +31,7 @@ const PropertyCard = ({ property }: Props) => {
         transition: 'color .25s ease'
       }}>
         <Link to={`/properties/${property._id}`} >
-          {toTitleCase(property.address.city)}, {property.address.state.toUpperCase()}
+          {toTitleCase(property.address.city)}, {property.address.state}
         </Link>
       </Heading>
       <HStack>

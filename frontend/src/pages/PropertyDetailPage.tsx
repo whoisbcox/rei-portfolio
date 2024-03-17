@@ -39,7 +39,7 @@ const PropertyDetailPage: React.FC = () => {
         </AspectRatio>
       </GridItem>
       <GridItem area="main" py={10} pr={{lg: 10}}>
-        <Heading fontSize={'2xl'} color='green.400'>{property.propertyTypes.name_singular} in {toTitleCase(property.address.city)}, {property.address.state.toUpperCase()}</Heading>
+        <Heading fontSize={'2xl'} color='green.400'>{property.propertyTypes.name_singular} in {toTitleCase(property.address.city)}, {property.address.state}</Heading>
         <Text fontSize={'xl'}>{0 < bedrooms ? bedroomsText: ''} {0 < bathrooms? bathroomsText: ''}</Text>
         <Text mt={8}>{description}</Text>
       </GridItem>

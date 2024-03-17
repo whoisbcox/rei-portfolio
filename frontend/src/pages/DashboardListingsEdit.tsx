@@ -101,8 +101,10 @@ const DashboardListingsEdit = () => {
             {states.map((state) => {
               const isDefault = '' === state.name;
               return isDefault ?
-              <option key={state.abbreviation} value="" disabled>{state.abbreviation}</option>:
-              <option key={state.abbreviation} value={state.abbreviation}>{state.abbreviation}</option>;
+              <option key={state.abbreviation} value="" disabled>{state.name}</option>:
+              'District of Columbia' === state.name ?
+              <option key={state.abbreviation} value={state.abbreviation}>{state.name}</option>:
+              <option key={state.abbreviation} value={state.name}>{state.name}</option>;
             })}
           </Select>
           <FormLabel htmlFor="zip" mt={4}>Zip</FormLabel>

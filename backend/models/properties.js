@@ -41,7 +41,7 @@ function validateProperty(property) {
       street_1: Joi.string().min(3).max(50).required(),
       street_2: Joi.string().allow(null, '').required(),
       city: Joi.string().min(3).max(50).required(),
-      state: Joi.string().length(2).required(),
+      state: Joi.string().min(2).max(30).required(),
       zip: Joi.string().regex(/^\d{5}(?:-\d{4})?$/),
     }),
     description: Joi.string().min(3).required(),
