@@ -1,6 +1,7 @@
+require('express-async-errors');
+const error = require('./middleware/error');
 const dotenv = require('dotenv');
 dotenv.config();
-
 const config = require('config');
 const express = require('express');
 const app = express();
@@ -32,6 +33,7 @@ app.use('/api/properties', s3Middleware);
 app.use('/api/properties', properties);
 app.use('/api/property-types', propertyTypes);
 app.use('/api/submit-form', formSubmissions);
+app.use(error);
 
 app.listen(
   PORT,
