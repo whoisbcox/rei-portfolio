@@ -1,6 +1,7 @@
 require('express-async-errors');
-const error = require('./middleware/error');
 const winston = require('winston');
+require('winston-mongodb');
+const error = require('./middleware/error');
 const dotenv = require('dotenv');
 dotenv.config();
 const config = require('config');
@@ -25,8 +26,9 @@ const logger = winston.createLogger({
         winston.format.simple()
       )
     }),
-    new winston.transports.File({ level: 'error', filename: 'logfile.log' })
-  ]
+    new winston.transports.File({ level: 'error', filename: 'logfile.log', handleExceptions: true, handleRejections: true, exitOnError: true }),
+    new winston.transports.MongoDB({ db: 'mongodb://127.0.0.1:27017/reiportfolio' }),
+  ],
 });
 
 if (!config.get('jwtPrivateKey')) {
