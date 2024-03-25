@@ -5,8 +5,8 @@ import usePropertyQueryStore from '../store'
 const SortSelector = () => {
   const sortOrders = [
     { value: '', label: 'Relevance' },
-    { value: 'availability', label: 'Availability' },
-    { value: 'name', label: 'Name' },
+    { value: 'city', label: 'City' },
+    { value: 'state', label: 'State' },
   ];
 
   const sortOrder = usePropertyQueryStore(s => s.propertyQuery.sortOrder);

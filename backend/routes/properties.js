@@ -61,8 +61,10 @@ router.get('/', async(req, res) => {
   // Sorting
   if (typeof ordering !== 'undefined' && filteredResults) {
     const sortFunctions = {
-      'name': (a, b) => a.name.localeCompare(b.name),
-      'availability': (a, b) => a.days_booked - b.days_booked,
+      // 'name': (a, b) => a.name.localeCompare(b.name),
+      // 'availability': (a, b) => a.days_booked - b.days_booked,
+      'city': (a, b) => a.address.city.localeCompare(b.address.city),
+      'state': (a, b) => a.address.state.localeCompare(b.address.state),
     };
   
     filteredResults.sort(sortFunctions[ordering]);
@@ -73,10 +75,10 @@ router.get('/', async(req, res) => {
   if (search) {
     filteredResults = filteredResults.filter((property) => {
       // console.log(property.address);
-      // const street1Match = property.address.street_1.toLowerCase().includes(search.toLowerCase());
-      // const street2Match = property.address.street_2.toLowerCase().includes(search.toLowerCase());
-      const nameMatch = property.name.toLowerCase().includes(search.toLowerCase());
-      return nameMatch;
+      const cityMatch = property.address.city.toLowerCase().includes(search.toLowerCase());
+      const stateMatch = property.address.state.toLowerCase().includes(search.toLowerCase());
+      // const nameMatch = property.name.toLowerCase().includes(search.toLowerCase());
+      return cityMatch || stateMatch;
     });
   }
   
