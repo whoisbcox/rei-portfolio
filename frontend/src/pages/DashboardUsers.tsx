@@ -30,9 +30,9 @@ const DashboardUsers = () => {
     <>
       <Flex justify='space-between' mb={8}>
         <Heading>Manage Users</Heading>
-        <Link to={'#'}>
+        {/* <Link to={'#'}>
           <Button variant="outline" colorScheme="green">Add User</Button>
-        </Link>
+        </Link> */}
       </Flex>
       <TableContainer>
         <Table variant="simple" size="md">
@@ -53,9 +53,9 @@ const DashboardUsers = () => {
                 <Td>{user.email}</Td>
                 <Td>{user.role ? user.role: 'subscriber'}</Td>
                 <Td>
-                  <Link to={`#`}>
+                  {/* <Link to={`#`}>
                     <Button variant="ghost" colorScheme="green"><FaPencil /></Button>
-                  </Link>
+                  </Link> */}
                   <Button variant="ghost" colorScheme="green" onClick={onOpen}><FaTrashCan /></Button>
                   <Modal isOpen={isOpen} onClose={onClose}>
                     <ModalOverlay />
