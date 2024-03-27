@@ -23,8 +23,8 @@ const NavBar = () => {
             <Button variant="outline" colorScheme="green" marginLeft={2}>Signup</Button>
           </Link>
         }
+        <ColorModeSwitch />
       </HStack>
-      <ColorModeSwitch />
     </HStack>
   )
 }
