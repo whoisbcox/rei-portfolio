@@ -9,7 +9,7 @@ const NavBar = () => {
   const { isAuthenticated, logout } = useAuth();
 
   return (
-    <HStack justifyContent="space-between" padding="10px" borderBottom="1px" borderColor="gray.200">
+    <HStack justifyContent="space-between" px={{base: 4, md: 8, lg: 20}} py="10px" borderBottom="1px" borderColor="gray.200">
       <Link to={`/`}>
         <Image src={logo} width="200px" height="60px" />
       </Link>

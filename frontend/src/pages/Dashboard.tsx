@@ -1,30 +1,36 @@
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid, GridItem, Wrap } from '@chakra-ui/react'
 import DashboardNav from '../components/DashboardNav'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../components/NavBar'
 
 const Dashboard = () => {
   return (
-    <Grid
-      templateAreas={{
-        base: `"nav" "aside" "main"`,
-        lg: `"nav nav" "aside main"`
-      }}
-      templateColumns={{
-        base: '1fr',
-        lg: '240px 1fr'
-      }}
-    >
-      <GridItem area="nav">
-        <NavBar />
-      </GridItem>
-      <GridItem area="aside" mx="auto" paddingY={8}>
-        <DashboardNav />
-      </GridItem>
-      <GridItem area="main" paddingY={8} paddingX={6}>
-        <Outlet />
-      </GridItem>
-    </Grid>
+    <>
+      <NavBar />
+      <Wrap px={{base: 4, md: 8, lg: 20}} py={{base: 4, lg: 8}}>
+        <Grid
+          templateAreas={{
+            base: `"aside" "main"`,
+            lg: `"aside main"`
+          }}
+          templateColumns={{
+            base: '1fr',
+            lg: '240px 1fr'
+          }}
+          w="100%"
+          maxW="1440px"
+          mx="auto"
+          gap={8}
+        >
+          <GridItem area="aside">
+            <DashboardNav />
+          </GridItem>
+          <GridItem area="main">
+            <Outlet />
+          </GridItem>
+        </Grid>
+      </Wrap>
+    </>
   )
 }
 
