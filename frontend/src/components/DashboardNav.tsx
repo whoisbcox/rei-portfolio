@@ -2,10 +2,13 @@ import { Box, HStack, Icon,  List, ListItem } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { FaHouseChimney, FaTableList } from 'react-icons/fa6'
 import { FaInbox, FaUserCog, FaUsers } from 'react-icons/fa'
+import { useAuth } from '../hooks/useAuth'
 
 
 
 const DashboardNav = () => {
+  const { isAdmin } = useAuth();
+
   const navLinks = [
     {
       path: '/dashboard/listings/new',
@@ -27,12 +30,16 @@ const DashboardNav = () => {
       label: 'Edit Profile',
       icon: <Icon as={FaUserCog} />
     },
-    {
+  ];
+
+  if (isAdmin) {
+    navLinks.push({
       path: '/dashboard/users',
       label: 'Manage Users',
       icon: <Icon as={FaUsers} />
-    },
-  ];
+    });
+  }
+  
   return (
     <List>
       {navLinks.map((navLink, index) => (
