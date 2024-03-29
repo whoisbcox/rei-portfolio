@@ -10,6 +10,7 @@ require('./startup/logging')();
 require('./startup/db')(logger);
 require('./startup/routes')(app);
 require('./startup/config')();
+require('./startup/prod');
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => logger.info(`Listening on ${port}...`));
