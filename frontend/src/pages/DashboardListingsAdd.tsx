@@ -30,7 +30,7 @@ const DashboardListingsAdd = () => {
     formData.append('featured_image', data.featured_image[0]);
   
     try {
-      const response = await axios.post('http://localhost:8080/api/properties', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/properties`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': jwt

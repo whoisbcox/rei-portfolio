@@ -15,7 +15,7 @@ const DashboardProfile = () => {
 
   const onSubmit = async(formData: FieldValues) => {
     try {
-      const response = await axios.put(`http://localhost:8080/api/users/me`, formData, {
+      const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/users/me`, formData, {
         headers: {
           'Content-Type': 'application/json',
           'x-auth-token': jwt

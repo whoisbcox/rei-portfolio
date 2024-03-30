@@ -6,7 +6,7 @@ export interface FetchResponse<T> {
 }
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 class APIClient<T> {

@@ -12,7 +12,7 @@ const RequestTourForm = ({ propertyId }: Props) => {
     formData.property = propertyId;
 
     try {
-      const response = await axios.post('http://localhost:8080/api/submit-form', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/submit-form`, formData, {
         headers: {
           'Content-Type': 'application/json'
         },

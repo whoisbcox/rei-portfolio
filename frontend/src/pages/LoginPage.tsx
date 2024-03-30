@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data: FieldValues) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/auth', data);
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth`, data);
       localStorage.setItem('jwt', response.data);
       navigate('/dashboard');
     } catch(error) {

@@ -11,7 +11,7 @@ const SignupPage = () => {
   
   const onSubmit = async (data: FieldValues) => {    
     try {
-      await axios.post('http://localhost:8080/api/users', data);
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/users`, data);
       setIsSuccessModalOpen(true);
       
       setTimeout(() => {

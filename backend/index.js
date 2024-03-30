@@ -12,5 +12,5 @@ require('./startup/routes')(app);
 require('./startup/config')();
 require('./startup/prod');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port, () => logger.info(`Listening on ${port}...`));

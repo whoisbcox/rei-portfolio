@@ -63,7 +63,7 @@ const DashboardListingsEdit = () => {
     }
   
     try {
-      const response = await axios.put(`http://localhost:8080/api/properties/${id}`, formData, {
+      const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/properties/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': jwt
