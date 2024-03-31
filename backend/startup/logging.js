@@ -1,3 +1,4 @@
+const config = require('config');
 const winston = require('winston');
 require('winston-mongodb');
 require('express-async-errors');
@@ -18,7 +19,7 @@ module.exports = async function() {
     ],
   });
   
-  const url = 'mongodb://127.0.0.1:27017/reiportfolio'
+  const url = config.get('db');
   const client = new MongoClient(url);
   await client.connect();
 
