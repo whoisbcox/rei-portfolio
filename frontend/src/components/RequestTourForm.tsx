@@ -3,6 +3,9 @@ import { FieldValues, useForm } from 'react-hook-form'
 import { formatDate } from '../utils'
 import axios from 'axios'
 
+interface Props {
+  propertyId: string;
+}
 
 const RequestTourForm = ({ propertyId }: Props) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();

@@ -9,7 +9,7 @@ import usePropertyQueryStore from '../store'
 
 const PropertyTypes = () => {
   const { data, isLoading, error } = usePropertyTypes();
-  const propertyTypeId = usePropertyQueryStore(s => s.propertyQuery.propertyTypeId);
+  // const propertyTypeId = usePropertyQueryStore(s => s.propertyQuery.propertyTypeId);
   const setPropertyTypeId = usePropertyQueryStore(s => s.setPropertyTypeId);
   const iconMap: {[key:number]: IconType } = {
     0:FaHome,

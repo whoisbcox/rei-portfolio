@@ -5,16 +5,22 @@ import { FieldValues, useForm } from 'react-hook-form'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
 
+export interface DecodedToken {
+  _id: string;
+}
+
 const DashboardListingsAdd = () => {
   const { data: propertyTypes } = usePropertyTypes();
   const { register, handleSubmit } = useForm();
   const jwt = localStorage.getItem('jwt');
-  const decodedToken = jwt && jwtDecode(jwt);
+  const decodedToken = jwt && (jwtDecode(jwt) as DecodedToken);
   const onSubmit = async (data: FieldValues) => {
     const formData = new FormData();
     
     // Append non-file fields to FormData
-    formData.append('user', decodedToken?._id);
+    if (decodedToken && '_id' in decodedToken) {
+      formData.append('user', decodedToken._id);
+    }
     formData.append('name', data.name);
     formData.append('address[street_1]', data.street_1);
     formData.append('address[street_2]', data.street_2);

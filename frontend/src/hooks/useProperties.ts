@@ -5,6 +5,7 @@ import { PropertyType } from './usePropertyTypes'
 import { User } from './useUsers'
 
 const apiClient = new APIClient<Property>('/api/properties');
+const jwt = localStorage.getItem('jwt');
 
 export interface Platform {
   _id: number;
@@ -66,7 +67,11 @@ const useProperties = (userId?: string | null) => {
   
   const deleteProperty = async (id: string) => {
     try {
-      await apiClient.delete(id);
+      await apiClient.delete(id, {
+        headers: {
+          'x-auth-token': jwt
+        },
+      });
       // Invalidate the query for 'properties' after successful deletion
       queryClient.invalidateQueries(queryKey as InvalidateQueryFilters);
     } catch (error) {

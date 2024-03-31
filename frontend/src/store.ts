@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { FilterSettings } from './components/PropertyFilter'
 
 interface PropertyQuery {
-  propertyTypeId?: number | undefined;
+  propertyTypeId?: string | undefined;
   filterSettings: FilterSettings;
   sortOrder?: string;
   searchText?: string;
@@ -11,7 +11,7 @@ interface PropertyQuery {
 interface PropertyQueryStore {
   propertyQuery: PropertyQuery;
   setSearchText: (searchText: string) => void;
-  setPropertyTypeId: (propertyTypeId: number | undefined) => void;
+  setPropertyTypeId: (propertyTypeId: string | undefined) => void;
   setFilterSettings: (filterSettings: FilterSettings) => void;
   sortOrder: (sortOrder: string) => void;
 }

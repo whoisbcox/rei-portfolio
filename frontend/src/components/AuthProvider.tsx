@@ -27,7 +27,7 @@ const isAdminRoute = (pathname: string) => {
 };
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [authState, setAuthState] = useState({ isAuthenticated: false, isAdmin: false, userId: null });
+  const [authState, setAuthState] = useState({ isAuthenticated: false, isAdmin: false, userId: '' });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -60,7 +60,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('jwt');
-    setAuthState({ isAuthenticated: false, isAdmin: false, userId: null });
+    setAuthState({ isAuthenticated: false, isAdmin: false, userId: '' });
     navigate('/login');
   };
 

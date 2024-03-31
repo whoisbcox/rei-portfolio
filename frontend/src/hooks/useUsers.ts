@@ -4,7 +4,7 @@ import APIClient from '../services/api-client'
 const apiClient = new APIClient<User[]>('/api/users');
 
 export interface User {
-  _id: number;
+  _id: string;
   name: string;
   email: string;
   password: string;

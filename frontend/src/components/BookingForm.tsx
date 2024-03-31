@@ -2,6 +2,9 @@ import { Box, Button, FormControl, Input, Text } from '@chakra-ui/react'
 import { FieldValues, useForm } from 'react-hook-form'
 import { formatDate } from '../utils'
 
+interface Props {
+  propertyId: string;
+}
 
 const BookingForm = ({ propertyId }: Props) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();

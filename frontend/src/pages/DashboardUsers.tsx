@@ -1,6 +1,9 @@
 import { Flex, Heading, Button, Modal, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr, useDisclosure, Spinner } from '@chakra-ui/react'
-import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import {
+  // FaPencil,
+  FaTrashCan
+} from 'react-icons/fa6'
+// import { Link } from 'react-router-dom'
 import useUsers, { User } from '../hooks/useUsers'
 import { useState, useEffect } from 'react'
 

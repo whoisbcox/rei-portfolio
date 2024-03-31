@@ -1,6 +1,6 @@
 import usePropertyTypes from './usePropertyTypes'
 
-const usePropertyType = (id?: number) => {
+const usePropertyType = (id?: number | string) => {
   const { data: propertyTypes } = usePropertyTypes();
   return propertyTypes?.find(p =>  p._id === id);
 }

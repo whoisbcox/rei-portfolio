@@ -8,6 +8,7 @@ import useProperty from '../hooks/useProperty'
 import { useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
+import { DecodedToken } from './DashboardListingsAdd'
 
 const DashboardListingsEdit = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const DashboardListingsEdit = () => {
   const [featImage, setFeatImage] = useState('');
   const navigate = useNavigate();
   const jwt = localStorage.getItem('jwt');
-  const decodedToken = jwt && jwtDecode(jwt);
+  const decodedToken = jwt && (jwtDecode(jwt) as DecodedToken);
 
   useEffect(() => {
     if (!property) return;
@@ -44,7 +45,9 @@ const DashboardListingsEdit = () => {
     const formData = new FormData();
     
     // Append non-file fields to FormData
-    formData.append('user', decodedToken?._id);
+    if (decodedToken && '_id' in decodedToken) {
+      formData.append('user', decodedToken._id);
+    }
     formData.append('name', data.name);
     formData.append('address[street_1]', data.street_1);
     formData.append('address[street_2]', data.street_2);
@@ -63,13 +66,13 @@ const DashboardListingsEdit = () => {
     }
   
     try {
-      const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/api/properties/${id}`, formData, {
+      await axios.put(`${import.meta.env.VITE_BASE_URL}/api/properties/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'x-auth-token': jwt
         },
       });
-  
+      
       navigate(`/dashboard/listings/${id}`);
     } catch (error) {
       console.error('Error while making the PUT request:', error);

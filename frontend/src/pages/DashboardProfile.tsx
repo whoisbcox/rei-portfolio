@@ -3,10 +3,11 @@ import useUser from '../hooks/useUser'
 import { FieldValues, useForm } from 'react-hook-form'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
+import { DecodedToken } from './DashboardListingsAdd'
 
 const DashboardProfile = () => {
   const jwt = localStorage.getItem('jwt');
-  const decodedToken = jwtDecode(jwt!);
+  const decodedToken: DecodedToken = jwtDecode(jwt!);
   const { data, isLoading, error } = useUser(decodedToken._id, jwt);
   const { register, handleSubmit } = useForm();
 

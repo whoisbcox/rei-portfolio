@@ -1,7 +1,7 @@
 import { Property } from '../hooks/useProperties'
 import { AspectRatio, Box, HStack, Heading, Image, Text } from '@chakra-ui/react'
-import PlatformIconList from './PlatformIconList'
-import DaysBooked from './DaysBooked'
+// import PlatformIconList from './PlatformIconList'
+// import DaysBooked from './DaysBooked'
 import { Link } from 'react-router-dom'
 import { toTitleCase } from '../utils'
 
