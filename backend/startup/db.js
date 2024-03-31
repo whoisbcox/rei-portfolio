@@ -1,6 +1,7 @@
+const config = require('config');
 const mongoose = require('mongoose');
 
 module.exports = function(logger) {
-  mongoose.connect('mongodb://127.0.0.1:27017/reiportfolio')
+  mongoose.connect(config.get('db'))
     .then(() => logger.info('Connected to MongoDB...'))
 }

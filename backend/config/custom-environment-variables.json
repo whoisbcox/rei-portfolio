@@ -1,3 +1,4 @@
 {
-  "jwtPrivateKey": "reiPortfolio_jwtPrivateKey"
+  "jwtPrivateKey": "reiPortfolio_jwtPrivateKey",
+  "db": "reiportfolio_db"
 }
