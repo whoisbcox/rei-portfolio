@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "NODE_ENV=production && node index.js"
-  },
-  "engines": {
-    "node": "20.x"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +16,6 @@
     "@aws-sdk/s3-request-presigner": "^3.501.0",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
-    "config": "^3.3.9",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.1",

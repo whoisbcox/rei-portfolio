@@ -1,4 +1,3 @@
-const config = require('config');
 const winston = require('winston');
 require('winston-mongodb');
 require('express-async-errors');
@@ -19,7 +18,7 @@ module.exports = async function() {
     ],
   });
   
-  const url = config.get('db');
+  const url = process.env.MONGODB_URI;
   const client = new MongoClient(url);
   await client.connect();
 
